@@ -1,0 +1,107 @@
+What is Matanza?
+
+  Matanza, pronounced Matanga, is a multiplayer game developed by Alejandro
+  Forero Cuervo.
+
+On what operating systems does it run?
+
+  Matanza was originally written to work on POSIX operating systems (Unix).  It
+  was latter ported to a few others.  It has been tested and is known to work
+  on the following systems:
+
+  - BeOS
+  - FreeBSD
+  - GNU/Linux
+  - Solaris
+  - Windows (95, 98, 2000, NT).
+
+  It will probably work out of the box on any other Unices.
+
+How much does it cost?
+
+  Matanza is made available free of price.
+
+  Not only that, but its code is available under the terms set forth by the GNU
+  General Public License.
+
+How can I obtain Matanza?
+
+  You can download Matanza's latest version from its web site, located at:
+
+    <http://bachue.com/matanza>
+
+How can I get the version from the CVS working?
+
+  The CVS version is intended for Matanza's developers.  It is not ready for
+  general consumption.
+
+  To checkout the CVS version you need to execute the following command the
+  first time (just hit return when prompted for the password):
+
+  % cvs -d:pserver:anonymous@abadon.uniandes.edu.co:/home/azul/cvsroot login
+
+  Once you have done that, you should be able to run the following command to
+  obtain the latest version:
+
+  % cvs -z3 -d:pserver:anonymous@abadon.uniandes.edu.co:/home/azul/cvsroot checkout matanza
+
+  To build it you will need automake and autoconf (we don't want to store
+  automatically generated files (such as `configure', `Makefile.in',
+  `config.h.in' and so on) in our CVS repository).
+
+  The following commands should get you up and running:
+
+  % aclocal
+  % autoconf
+  % automake -a
+
+  After that, you should be able to build Matanza as usual.
+
+I think I found a bug!  What should I do?
+
+  First, make sure you have the latest released version as it might be fixed
+  already.  After that, please write to Alejandro Forero at <bachue@bachue.com>
+  or to Matanza's mailing list and state as much information as you can.  The
+  following information should be enough:
+
+  - Operating System.
+  - Matanza Version (even if it's the last, write it down in your report).
+  - Output of Matanza (whatever it printed in the window it was ran on).
+  - General information about the game.  If it's possible to reproduce the bug,
+    please state how.
+
+How can I contribute to Matanza?
+
+  There are many ways to contribute to the development of Matanza.
+
+  The first and easiest is contacting the author and telling him about your
+  experience with the game.  He, as most free software authors, likes to know
+  the users of his programs.  He welcomes any suggestions on how to improve it.
+
+  Another way to help is drawing new ships and submitting them to the author
+  for inclussion in future releases.  Consult the ship.txt file for more
+  information on this subject.
+
+  Finally, you might want to contribute by coding new features, improving
+  Matanza's efficiency or fixing bugs.
+
+How many players can play Matanza concurrently?
+
+  This question is hard to answer.
+
+  Matanza has no internal limits to the number of players.  The maximum number
+  is determined only by your machine configuration.  This number might be
+  limited by the number of file descriptor that your system allows per process,
+  your available memory and your CPU power.
+
+  You can use the `--max-players' option to set a limit.
+
+When should I use the --bold option?
+
+  The --bold option tells Matanza to use bold characters.  By default, it will
+  not use them.  Using bold characters allows Matanza to improve the graphics
+  and you should use it whenever the telnet clients and terminal emulators most
+  people will use do support them.
+
+  As far as I know, all telnet clients and terminal emulators except Windows'
+  support bold characters.  Windows' just ignores them.

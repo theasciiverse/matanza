@@ -1,0 +1,99 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(src/matanza.h)
+
+dnl For the moment, if you change the version, don't forget to change it on
+dnl winconfig.h.
+
+AM_INIT_AUTOMAKE(matanza, 0.15)
+AC_PREREQ(2.12)
+AM_CONFIG_HEADER(config.h)
+
+dnl Checks for programs.
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+
+dnl =====================================================================
+
+dnl These are nice to have. They don't hurt.
+
+CFLAGS="-DMATANZA_ASSERT=1 -DMATANZA_VERBOSE=1"
+
+AC_ARG_ENABLE(profile, [  --enable-profile        turn on profiling [default=no]],
+if test "x$enable_profile" = xyes; then
+  CFLAGS="-pg $CFLAGS"
+fi)
+
+AC_ARG_ENABLE(debug, [  --enable-debug          turn on debugging [default=no]],
+if test "x$enable_debug" = xyes; then
+  CFLAGS="-g $CFLAGS"
+fi)
+
+AC_ARG_ENABLE(efence, [  --enable-efence         Link against efence [default=no]],
+if test "x$enable_efence" = xyes; then
+  AC_CHECK_LIB(efence, malloc)
+fi)
+
+dnl =====================================================================
+
+AC_CHECK_HEADERS(png.h)
+
+AC_CHECK_LIB(png, png_sig_cmp, [
+  LIBS="$LIBS -lpng"
+  HAVE_LIBPNG="1"
+  AC_DEFINE_UNQUOTED(HAVE_LIBPNG, 1, libpng was found)
+  ], [HAVE_LIBPNG="0"])
+
+dnl =====================================================================
+
+dnl We use libm for trigonometric functions.
+
+AC_CHECK_LIB(m, sin)
+
+dnl =====================================================================
+
+dnl In Solaris/SunOS you need -lsocket if you use socket() and -lnsl
+dnl if you use inet_addr
+
+AC_CHECK_LIB(socket, socket)
+AC_CHECK_LIB(nsl, inet_ntoa)
+
+dnl =====================================================================
+
+dnl Checks for header files.
+AC_HEADER_STDC
+
+dnl Headers for Unix:
+AC_CHECK_HEADERS(fcntl.h limits.h unistd.h arpa/telnet.h netdb.h netinet/in.h arpa/inet.h sys/ioctl.h sys/time.h sys/types.h sys/socket.h)
+
+dnl Headers for Windows:
+AC_CHECK_HEADERS(winsock2.h windows.h direct.h)
+
+dnl Headers for BeOS:
+AC_CHECK_HEADERS(OS.h Errors.h)
+
+dnl =====================================================================
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+AC_TYPE_SIZE_T
+AC_HEADER_TIME
+AC_STRUCT_TM
+
+dnl =====================================================================
+
+dnl Checks for library functions.
+AC_FUNC_MEMCMP
+AC_FUNC_VPRINTF
+AC_CHECK_FUNCS(signal fork setsid socket fcntl strerror strspn inet_ntop inet_ntoa ioctlsocket hstrerror usleep Sleep gettimeofday snooze_until system_time GetTickCount setsockopt WSASocket WSAStartup closesocket umask)
+
+dnl =====================================================================
+
+AC_DEFINE_UNQUOTED(MATANZA_SERVER, 1, The build is for the Matanza server)
+
+dnl =====================================================================
+
+AC_OUTPUT(Makefile src/Makefile)
+
+dnl =====================================================================

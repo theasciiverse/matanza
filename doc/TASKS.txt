@@ -1,0 +1,434 @@
+01. Finish the move to C
+
+Done: 90%
+Prioridad: 5
+Complejidad: 5
+Duración: 4
+Encargado: Azul.
+
+Get the functionality from matanza.w and matclient.w in normal C files.  This
+is of high complexity since it isn't just a format change but also involves
+organizing everything logically in the C files according to the programming
+principles (described in the STYLE file).
+
+Tue Feb 26 19:30:03 COT 2002 Azul: I've got much of this done.  However, I
+haven't allowed the player to play by Telnet, only MMP.
+
+Mon Dec 30 03:10:32 COT 2002 Azul: I decided I would write a widgets system
+for telnet.  I am progressing slowly.
+
+Mon Mar  3 12:46:17 COT 2003 Azul: I'm almost done.  There are a few
+details that I still need to work out but I'm almost done.
+
+Wed Apr  2 00:08:50 COT 2003 Azul: Please report anything that might be
+missing.
+
+02. Get teams working again.
+
+Done: 100%
+Author: Azul.
+
+Get the team play supported again.
+
+You must review the code in src/team.c and enable a few lines that have been
+commented out.
+
+A way to specify the teams from the command line arguments is required.  A
+little problem is that the universes are required to build the teams but they
+(the universes) are only created after the command line arguments have been
+parsed.  So a temporary structure to keep the teams' description is needed (or
+a modification to the src/team.c file so the teams are created while
+parsing the command line arguments and added to the default universe once
+it is created).
+
+Tue Mar  4 00:37:09 COT 2003 Azul: I have advances to report on this front.
+I fixed the structures to represent teams.  Each universe has its own list
+of teams.  Now all that is needed is to implement some widgets to allow the
+player to create/select their team (depending on their universe) and
+perhaps some minor modifications so the rest of the code takes teams into
+account.  The previous idea was that teams were created by command line
+arguments; this was broken, it is better to allow the players to create
+teams through their widgets, which will get this functionality much more
+used.
+
+Wed Mar  5 00:59:05 COT 2003 Azul: I made the widgets allowing the player
+to select a team as well as to create a team.  The teams are created when
+the players select them.  Yay.  Now all that is left is actually
+registering the team for the player and having that information modify
+the game.
+
+Thu Mar  6 11:17:06 COT 2003 Azul: Okay, this one is done. YAY. :)
+
+03. Build a design for the Artificial Inteligence module
+
+This task has been outdated.
+
+04. Solve problems with the handler for the Telnet protocol
+
+Done: 100%
+Author: Azul
+
+The src/telnet.c file has one bug.  It reads:
+
+/* TODO: There are problems when a packet gets cut in the middle of a telnet
+ * command.  They should be fixed. */
+
+This happens because the code assumes that the arguments to the Telnet
+options (TELOPT_TTYPE, TELOPT_NAWS, TELOPT_LINEMODE) are always read during
+the same call to the recv function.  However, if they are broken into
+multiple packages and then read in different calls to recv, they won't be
+in the same buffer and wreckage will occur.
+
+The code should be changed to store the characters for the arguments in
+fields of the MatTelnet structure as they are read.  Currently, it attempts
+to copy them all into their appropriate location when they have been read
+completely.
+
+Tue Feb 26 19:27:11 COT 2002 Azul: Okay, I fixed this, adding a buffer to
+the MatTelnet structure.
+
+05. Finish the OpenGL Client
+
+Done: 50%
+Prioridad: 3
+Complejidad: 4
+Duración: 4
+Encargado: Azul.
+
+An alternative client for Matanza based on OpenGL should be finished.  Azul
+is currently working on this as his project for his Computación Gráfica
+class.
+
+Tue Feb 26 19:27:36 COT 2002 Azul: I'm still working on this.  The basic
+client does work (although it is in Cweb, I should convert it to organized
+C code) but it needs a lot of improvements.  Once I get it translated to
+basic C, I will close this task and add others.
+
+06. Read more images from PNG files
+
+Done: 100%
+Encargado: Azul.
+
+Matanza has some code to read PNG files to its MatImage structure.  This
+code is used to read background images for the universes.
+
+You must make it so this code is also used to read images for the ships,
+the missiles, the asteroids and all the objects from PNG files, removing
+the currently used code (that reads the images from txt files such as
+shiptank.txt in matanza-0.13).
+
+Tue Feb 26 19:28:59 COT 2002 Azul: Okay, I got this almost done, now I need
+to make the images.
+
+Mon Mar  3 12:47:02 COT 2003 Azul: Okay, I did it.  All the images are
+stored in PNG files.  The old code has been removed.
+
+07. Document the language used to build universes
+
+Prioridad: 4
+Complejidad: 3
+Duración: 4
+Encargado: Nadie.
+Dependencias: 8
+
+The current language to describe universes is based on PNG and XML files.
+The DTD must be defined and a non-programmer-manual must be written so that
+our artists can begin to work on universes.
+
+08. Finish the language used to build universes
+
+Prioridad: 4
+Complejidad: 3
+Duración: 3
+Encargado: Nadie
+
+The language used to describe universes must be finished so all the
+variables for a universe can be specified.
+
+09. Improve the widgets' system for the telnet connections
+
+Prioridad: 3
+Complejidad: 2
+Duración: 4
+Encargado: Nadie
+
+The widgets' system must be improved: it should be able to reposition
+widgets in the screen when it is resized.
+
+More widgets should probably be added too.
+
+For instance, it would be nice to let one given telnet connection hold many
+players, each with his own view (as arg_ppc does for matanza 0.13).
+
+It would also be nice to let each player choose his own ship's image.
+
+Wed Apr  2 00:10:07 COT 2003 Azul: Now each player can choose his own ship.
+
+10. Fix the algorithm for handling collisions
+
+The algorithm for handling collisions is not as smart as it should be.
+
+Something else is needed.
+
+Look in mat_movingobj_crash_wall_ship for more details.
+
+11. Handle destruction of objects better
+
+I don't know how this can be done, but when a ship dies an animation of
+some sort should be shown.  Perhaps the ship could be set to slowly
+disappear in the same way that is used to have it appear.
+
+Also, when an asteroid is cracked, we could use some sort of animation.
+
+Perhaps a generic system could be implemented so all moving objects have an
+specification of what animation to play when they are destroyed (one
+animation for ships, another for big asteriods, another for small asteroids
+and so on).
+
+12. Allow different types of ships in a given universe
+
+Done: 85%
+Prioridad: 4
+Complejidad: 3
+Duración: 4
+Encargado: Galactus
+Dependencias: 8
+
+To make things interesting, it should be possible to specify different
+parameters such as speed, health, number of bullets and missiles and so on
+per ship.  Each different ship should be given a specific image.
+
+This should be configurable through the XML file.
+
+The changes required to do this are:
+
+a. Create shiptype.c and shiptype.h files with the descriptions for the
+ships.  There should be a structure MatShipType there, containing all the
+information for a given type of ship.  We will create different instances
+of the MatShipType class at runtime as specified in (d).  You will want to
+add fields such as health, max_speed, acceleration, can_brake, an array
+num_bullets with the maximum number of bullets the player can shot of every
+specific type, the image for the ships of this type and so on.  Each
+shiptype should have a unique (for a given universe) ID.
+
+b. Modify ship.c and ship.h and have the functions there specify a given
+MatShipType for every ship.  This should probably be specified as one field
+in the MatShip structure: a pointer to a MatShipType object.  You'll
+probably need to modify not only the constructors but also many other
+functions to have them respect the information in the MatShipType object.
+
+c. Change universe.c and universe.h so every universe has a hash with types
+for the ships.  We will register the available ship types in that hash,
+giving each a unique ID.  You can clone the way each universe has a hash
+with all its images (each image having a unique ID).
+
+d. Modify the XML reader (in usluniverse.c) to accept a given <ShipType>
+tag inside the <Universe> tag.  The ShipType tag must contain enough
+parameters to initialize a given MatShipType structure.  When the parser
+finds one ShipType tag, it should create a MatShipType structure and
+register it in the universe.
+
+e. Make it possible for the rendering widget (defined in widgetrender.c and
+widgetrender.h) to receive focus and also make it possible to associate a
+callback function with its key event.  This should be done in a manner
+similar to how one registers handles for the focus-in/focus-out events for
+buttons (widgetbutton.c) and text entries (widgettext.c).  In
+mat_mainmenu_start (in mainmenu.c) register one such handler for the render
+widget that makes it possible to cycle through the images for all the ship
+types available in the universe.  This way the telnet player will be able
+to select the ship he wants to use.
+
+Wed Apr  2 00:11:09 COT 2003 Azul: Galactus sent a patch implemented most
+of this.  Now all that is missing is for the configuration for the ship
+to take effect.
+
+13. Extend MMP including teams
+
+Currently MMP does not display any information about teams.  It should be
+extended so MMP clients can request the list of teams in a given universe,
+have their ships added to teams and create new teams.
+
+14. Make sure it is impossible to create multiple teams with the same name
+
+Done: 100%
+Author: Accusor
+
+Edit mat_mainmenu_play in mainmenu.c so whenever a player attempts to
+create a team, it will check all the teams in the universe selected and
+make sure no existing team has the name entered by the player for the new
+team.  Otherwise, rather than create the team and let the player play, an
+error should be displayed along the lines of ``One team by that name
+already exists!  Enter another name!''.
+
+Fri abr 18 19:18:32 COT 2003 Accusor: if the player enters a team's name 
+alredy used, an error is displayed: "That team alredy exists!".
+
+Sun Apr 20 03:41:54 COT 2003 Azul: And the focus is given to the right
+widget after the error is shown.
+
+15. Make sure it is impossible to create an unnamed team
+
+Done: 100%
+Author: Accusor
+
+Edit mat_mainmenu_play in mainmenu.c adding code to make it impossible to
+create a team without name.  If the player enters no text at all in the
+text widget for the team's name, an error should be displayed.
+
+Fri abr 18 19:18:32 COT 2003 Accusor: It is now impossible to create an
+unnamed team, if the player enters no name, a team named "Team 0", "Team
+1", etc., is created.
+
+16. Make it possible for the player to quit (with ``q'')
+
+Done: 100%
+Author: Accusor, Azul
+
+It should be possible for a player to quit the game by hitting ``q''.
+A confirmation would be nice too.
+
+Thu Apr 17 18:55:50 COT 2003 Accusor: It is now possible to quit 
+during the game hitting `q' (and `Q').                           
+
+17. Fix mat_anglecache_best, which is currently broken.
+
+18. Add a parameter to the Shot behaviour that causes it to shot in every
+direction (rather than the direction of the closest ship).
+
+Done: 0%
+Priridad: 2
+Complejidad: 3
+Duración: 2
+Encargado: Nadie
+
+19. Make sure ships are removed when their players quit or go netdead.
+
+Done: 100%
+Encargado: Azul
+
+Wed Apr 23 03:07:57 COT 2003 Azul: Okay, this has been done, I think.  I
+had to enable reference counters for all the objects: say ship A shots
+bullet B and then its player disconnects; the ship must not be freed
+immediately or else the pointer inside the bullet will become invalid.  It
+should just be removed from the universe, but only freed after the bullet
+disappears.  It seems to be working.
+
+20. Make it possible to specify the number of lives for each specific
+universe (through the XML).  Have mat_universe_max_dead_get return a field
+with this value that depends on each particular universe.  Make arg_lives
+the default.
+
+Done: 0%
+Prioridad: 4
+Complejidad: 3
+Duración: 2
+Encargado: Nadie
+
+21. Implement mat_widget_play_help, which ought to give a brief description
+of the commands.
+
+Done: 0%
+Prioridad: 3
+Complejidad: 1
+Duración: 2
+Encargado: Nadie
+
+22. Implement mat_team_ship_forall, in much the same way that the *_forall
+functions are implemented.
+
+Done: 100%
+Encargado: Accusor
+
+Sun Apr 27 02:32:28 COT 2003 Accusor: ok, this one is done.
+
+23. Implement some behaviour for modifing the speed of objects depending
+on certain conditions.
+
+Done: 90%
+Prioridad: 3
+Complejidad: 5
+Duración: 4
+Encargado: Arhuaco
+
+Thu Apr 24 22:10:12 COT 2003 Azul: I received an implementation from
+Arhuaco.  It's almost fully done, but it could use some improvements, I
+guess.  It has a TODO that needs to be fixed for calculating angle
+differences.
+
+24. There is a bug with the renderrotate shown at the mainmenu; it shows a
+lot of noise.  Remove it.
+
+25. mat_movingobj_crash_check_get has bugs.
+
+Done: 100%
+Prioridad: 5
+Complejidad: 3
+Duración: 3
+Encargado: Azul
+
+It uses the previous coordinate system on which the position of the objects
+was relative to their upper left corner.  In the new system the position is
+relative to their center.  The function must be updated to reflect this.
+It might be useful to define functions mat_moving_obj_pos_[xy]_ul_get to
+return the position at the upper left corner (but remember that it should
+be greater than 0 and less than the size of the universe).  If these
+functions are created, code at widgetplay should be modified to use them
+(rather than calculate the positions itself).
+
+Wed Apr 23 03:06:18 COT 2003 Azul: Okay, now we have functions
+mat_movingobj_pos_[xy]_center_get and mat_movingobj_pos_[xy]_ul_get to get
+the positions respective to the center and to the upper left corner.
+We should use a profiler and see which get called more often, optimizing
+our structures for that case.
+
+26. Make sure --max-players works; rename to --max-connections.
+
+Done: 0%
+Prioridad: 4
+Complejidad: 1
+Duración: 1
+Encargado: Nadie
+
+You must make sure --max-players is currently respected by both the
+handlers for Telnet and MMP connections.  Also, it should be renamed
+to --max-connections and the argument used should be
+mat_arg_max_connections.
+
+27. Make it possible to compile Matanza without MMP
+
+Done: 0%
+Prioridad: 2
+Complejidad: 3
+Duración: 3
+Encargado: Nadie
+
+It should be possible to compile Matanza with no support for MMP.  This
+should be done by passing a parameter to the configure file, that causes a
+given preprocessor symbol to be defined.  All the code for MMP should check
+to see if the symbol is defined.  When the symbol is not defined, all the
+functionality that is only required for MMP to work should be removed,
+making the resulting executable as small as possible.
+
+28. Print a message when a ship is removed
+
+Done: 0%
+Prioridad: 3
+Complejidad: 1
+Duración: 1
+Encargado: Nadie
+
+When ships are removed from their universe, some friendly message should be
+printed, probably explaining the reason why they were removed.  This can be
+done by adding the code for printing the message to mat_ship_remove, called
+to remove a ship, or, perhaps even better, adding it to the callers of
+mat_ship_remove so the reason for the removal is known.
+
+29. Remove matanza-universe-type-banner-add.
+
+Rather than call matanza-universe-type-banner-add, one should pass all the
+strings in a list as an argument to matanza-universe-type-new.
+
+30. Make a way to pass command line arguments to the Scheme code.
+
+There should be a way to specify command line arguments that are passed to
+the Scheme code.

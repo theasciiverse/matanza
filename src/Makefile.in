@@ -1,0 +1,2188 @@
+# Makefile.in generated automatically by automake 1.4-p6 from Makefile.am
+
+# Copyright (C) 1994, 1995-8, 1999, 2001 Free Software Foundation, Inc.
+# This Makefile.in is free software; the Free Software Foundation
+# gives unlimited permission to copy and/or distribute it,
+# with or without modifications, as long as this notice is preserved.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY, to the extent permitted by law; without
+# even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+
+SHELL = @SHELL@
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+oldincludedir = /usr/include
+
+DESTDIR =
+
+pkgdatadir = $(datadir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
+
+top_builddir = ..
+
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOMAKE = @AUTOMAKE@
+AUTOHEADER = @AUTOHEADER@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@ $(AM_INSTALL_PROGRAM_FLAGS)
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+transform = @program_transform_name@
+
+NORMAL_INSTALL = :
+PRE_INSTALL = :
+POST_INSTALL = :
+NORMAL_UNINSTALL = :
+PRE_UNINSTALL = :
+POST_UNINSTALL = :
+host_alias = @host_alias@
+host_triplet = @host@
+CC = @CC@
+HAVE_LIB = @HAVE_LIB@
+LIB = @LIB@
+LN_S = @LN_S@
+LTLIB = @LTLIB@
+MAKEINFO = @MAKEINFO@
+PACKAGE = @PACKAGE@
+VERSION = @VERSION@
+
+bin_PROGRAMS = matanza
+
+#        behaviour.c     \
+#        behaviour.h     \
+#        behaviourchase.c\
+#        behaviourchase.h\
+#        behaviourshot.c \
+#        behaviourshot.h \
+
+matanza_SOURCES =          anglecache.c            anglecache.h            animation000.c          animation000.h          animation001.c          animation001.h          animation002.c          animation002.h          animationfire.c         animationfire.h         asciirender.c           asciirender.h           common.h                connection.c            connection.h            distance.c              distance.h              dlist.c                 dlist.h         	getopt.c        	getopt.h        	getopt1.c               image.c                 image.h                 imagevector.c           imagevector.h           machine.c               machine.h               machinedefault.c         machinedefault.h         machinefunc.c           machinefunc.h           machineimage.c          machineimage.h          machineinit.c           machineinit.h           machinejoin.c           machinejoin.h           machineshipadd.c         machineshipadd.h         machineshipcmd.c         machineshipcmd.h         main.c          	matanza.h               menu0.c                 menu0.h                 menu1.c                 menu1.h                 message.c               message.h               missile.c               missile.h               mmp.h                   movingobj.c             movingobj.h             network.c               network.h               networkserver.c         networkserver.h         palette.c               palette.h               renderimage.c           renderimage.h           renderrotate.c          renderrotate.h          scm.c                   scm.h                   scmbegin.c              scmbegin.h              scmbool.c               scmbool.h               scmcase.c               scmcase.h               scmchar.c               scmchar.h               scmclosure.c            scmclosure.h            scmcond.c               scmcond.h       	scmconnection.c		scmconnection.h	        scmcons.c               scmcons.h               scmdefine.c             scmdefine.h             scmenv.c                scmenv.h                scmeq.c                 scmeq.h                 scmfile.c               scmfile.h               scmif.c                 scmif.h                 scmimage.c              scmimage.h              scmimagevector.c         scmimagevector.h         scmlet.c                scmlet.h                scmlist.c               scmlist.h               scmload.c               scmload.h               scmmovingobj.c          scmmovingobj.h          scmnumber.c             scmnumber.h             scmproc.c               scmproc.h               scmquote.c              scmquote.h              scmread.c               scmread.h               scmrepl.c               scmrepl.h               scmship.c               scmship.h               scmshiptype.c           scmshiptype.h           scmspecial.c            scmspecial.h            scmstring.c             scmstring.h             scmsymbol.c             scmsymbol.h             scmteam.c               scmteam.h               scmtelnet.c             scmtelnet.h             scmuniverse.c           scmuniverse.h           scmuniversetype.c         scmuniversetype.h         scmverbose.c            scmverbose.h            scmwindow.c             scmwindow.h             scmwidget.c             scmwidget.h             scmwidgetplay.c         scmwidgetplay.h         ship.c                  ship.h                  shipcrash.c             shipcrash.h             shipkey.c               shipkey.h               shipprint.c             shiptype.c              shiptype.h              sub.c                   sub.h                   team.c                  team.h                  telnet.c                telnet.h                universe.c              universe.h              universetype.c          universetype.h          widget.c                widget.h                widgetbanner.c          widgetbanner.h          widgetbutton.c          widgetbutton.h          widgetlabel.c           widgetlabel.h           widgetlist.c            widgetlist.h            widgetplay.c            widgetplay.h            widgetplaydraw.c         widgetplaydraw.h         widgetplaykey.c         widgetplaykey.h         widgetrender.c          widgetrender.h          widgettext.c            widgettext.h            window.c                window.h                windowbuffer.c          windowbuffer.h
+
+
+EXTRA_matanza_SOURCES =          winconfig.h
+
+mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+CONFIG_HEADER = ../config.h
+CONFIG_CLEAN_FILES = 
+PROGRAMS =  $(bin_PROGRAMS)
+
+
+DEFS = @DEFS@ -I. -I$(srcdir) -I..
+CPPFLAGS = @CPPFLAGS@
+LDFLAGS = @LDFLAGS@
+LIBS = @LIBS@
+matanza_OBJECTS =  anglecache.o animation000.o animation001.o \
+animation002.o animationfire.o asciirender.o connection.o distance.o \
+dlist.o getopt.o getopt1.o image.o imagevector.o machine.o \
+machinedefault.o machinefunc.o machineimage.o machineinit.o \
+machinejoin.o machineshipadd.o machineshipcmd.o main.o menu0.o menu1.o \
+message.o missile.o movingobj.o network.o networkserver.o palette.o \
+renderimage.o renderrotate.o scm.o scmbegin.o scmbool.o scmcase.o \
+scmchar.o scmclosure.o scmcond.o scmconnection.o scmcons.o scmdefine.o \
+scmenv.o scmeq.o scmfile.o scmif.o scmimage.o scmimagevector.o scmlet.o \
+scmlist.o scmload.o scmmovingobj.o scmnumber.o scmproc.o scmquote.o \
+scmread.o scmrepl.o scmship.o scmshiptype.o scmspecial.o scmstring.o \
+scmsymbol.o scmteam.o scmtelnet.o scmuniverse.o scmuniversetype.o \
+scmverbose.o scmwindow.o scmwidget.o scmwidgetplay.o ship.o shipcrash.o \
+shipkey.o shipprint.o shiptype.o sub.o team.o telnet.o universe.o \
+universetype.o widget.o widgetbanner.o widgetbutton.o widgetlabel.o \
+widgetlist.o widgetplay.o widgetplaydraw.o widgetplaykey.o \
+widgetrender.o widgettext.o window.o windowbuffer.o
+matanza_LDADD = $(LDADD)
+matanza_DEPENDENCIES = 
+matanza_LDFLAGS = 
+CFLAGS = @CFLAGS@
+COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+CCLD = $(CC)
+LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
+DIST_COMMON =  Makefile.am Makefile.in
+
+
+DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
+
+TAR = tar
+GZIP_ENV = --best
+SOURCES = $(matanza_SOURCES) $(EXTRA_matanza_SOURCES)
+OBJECTS = $(matanza_OBJECTS)
+
+all: all-redirect
+.SUFFIXES:
+.SUFFIXES: .S .c .o .s
+$(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
+	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps src/Makefile
+
+Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
+	cd $(top_builddir) \
+	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+
+mostlyclean-binPROGRAMS:
+
+clean-binPROGRAMS:
+	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
+
+distclean-binPROGRAMS:
+
+maintainer-clean-binPROGRAMS:
+
+install-binPROGRAMS: $(bin_PROGRAMS)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
+	@list='$(bin_PROGRAMS)'; for p in $$list; do \
+	  if test -f $$p; then \
+	    echo "  $(INSTALL_PROGRAM) $$p $(DESTDIR)$(bindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`"; \
+	     $(INSTALL_PROGRAM) $$p $(DESTDIR)$(bindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`; \
+	  else :; fi; \
+	done
+
+uninstall-binPROGRAMS:
+	@$(NORMAL_UNINSTALL)
+	list='$(bin_PROGRAMS)'; for p in $$list; do \
+	  rm -f $(DESTDIR)$(bindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`; \
+	done
+
+.c.o:
+	$(COMPILE) -c $<
+
+.s.o:
+	$(COMPILE) -c $<
+
+.S.o:
+	$(COMPILE) -c $<
+
+mostlyclean-compile:
+	-rm -f *.o core *.core
+
+clean-compile:
+
+distclean-compile:
+	-rm -f *.tab.c
+
+maintainer-clean-compile:
+
+matanza: $(matanza_OBJECTS) $(matanza_DEPENDENCIES)
+	@rm -f matanza
+	$(LINK) $(matanza_LDFLAGS) $(matanza_OBJECTS) $(matanza_LDADD) $(LIBS)
+
+tags: TAGS
+
+ID: $(HEADERS) $(SOURCES) $(LISP)
+	list='$(SOURCES) $(HEADERS)'; \
+	unique=`for i in $$list; do echo $$i; done | \
+	  awk '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	here=`pwd` && cd $(srcdir) \
+	  && mkid -f$$here/ID $$unique $(LISP)
+
+TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) $(LISP)
+	tags=; \
+	here=`pwd`; \
+	list='$(SOURCES) $(HEADERS)'; \
+	unique=`for i in $$list; do echo $$i; done | \
+	  awk '    { files[$$0] = 1; } \
+	       END { for (i in files) print i; }'`; \
+	test -z "$(ETAGS_ARGS)$$unique$(LISP)$$tags" \
+	  || (cd $(srcdir) && etags -o $$here/TAGS $(ETAGS_ARGS) $$tags  $$unique $(LISP))
+
+mostlyclean-tags:
+
+clean-tags:
+
+distclean-tags:
+	-rm -f TAGS ID
+
+maintainer-clean-tags:
+
+distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
+
+subdir = src
+
+distdir: $(DISTFILES)
+	@for file in $(DISTFILES); do \
+	  d=$(srcdir); \
+	  if test -d $$d/$$file; then \
+	    cp -pr $$d/$$file $(distdir)/$$file; \
+	  else \
+	    test -f $(distdir)/$$file \
+	    || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
+	    || cp -p $$d/$$file $(distdir)/$$file || :; \
+	  fi; \
+	done
+anglecache.o: anglecache.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+animation000.o: animation000.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+animation001.o: animation001.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+animation002.o: animation002.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+animationfire.o: animationfire.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+asciirender.o: asciirender.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+asteroid.o: asteroid.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h \
+	movingobj.h scm.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h asteroid.h widgetplay.h \
+	widgetwindow.h telnet.h widget.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h palette.h renderrotate.h renderimage.h \
+	scmasteroid.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmissile.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetrender.h \
+	widgettext.h menu0.h menu1.h animation000.h animation001.h \
+	animation002.h animationfire.h common.h
+connection.o: connection.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+distance.o: distance.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+dlist.o: dlist.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+getopt.o: getopt.c ../config.h
+getopt1.o: getopt1.c ../config.h getopt.h
+image.o: image.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+imagevector.o: imagevector.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+machine.o: machine.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+machinedefault.o: machinedefault.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+machinefunc.o: machinefunc.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+machineimage.o: machineimage.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+machineinit.o: machineinit.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+machinejoin.o: machinejoin.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+machineshipadd.o: machineshipadd.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+machineshipcmd.o: machineshipcmd.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+main.o: main.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+menu0.o: menu0.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+menu1.o: menu1.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+message.o: message.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+missile.o: missile.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+movingobj.o: movingobj.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+movingobjprint.o: movingobjprint.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h widgetwindow.h \
+	telnet.h machinedefault.h machineimage.h machineinit.h \
+	machinejoin.h machineshipadd.h machineshipcmd.h machinefunc.h \
+	distance.h message.h asciirender.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h scmwidgetwindow.h window.h \
+	windowbuffer.h widget.h widgetbanner.h widgetbutton.h \
+	widgetlabel.h widgetlist.h widgetplaydraw.h widgetplaykey.h \
+	widgetrender.h widgettext.h menu0.h menu1.h animation000.h \
+	animation001.h animation002.h animationfire.h common.h
+network.o: network.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+networkserver.o: networkserver.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+palette.o: palette.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+renderimage.o: renderimage.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+renderrotate.o: renderrotate.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scm.o: scm.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmasteroid.o: scmasteroid.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	movingobj.h scm.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h asteroid.h widgetplay.h \
+	widgetwindow.h telnet.h widget.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h palette.h renderrotate.h renderimage.h \
+	scmasteroid.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmissile.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetrender.h \
+	widgettext.h menu0.h menu1.h animation000.h animation001.h \
+	animation002.h animationfire.h common.h
+scmbegin.o: scmbegin.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmbool.o: scmbool.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmcase.o: scmcase.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmchar.o: scmchar.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmclosure.o: scmclosure.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmcond.o: scmcond.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmconnection.o: scmconnection.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmcons.o: scmcons.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmdefine.o: scmdefine.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmenv.o: scmenv.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmeq.o: scmeq.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmfile.o: scmfile.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmif.o: scmif.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmimage.o: scmimage.c
+scmimagevector.o: scmimagevector.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmlet.o: scmlet.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmlist.o: scmlist.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmload.o: scmload.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmmissile.o: scmmissile.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	movingobj.h scm.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h asteroid.h widgetplay.h \
+	widgetwindow.h telnet.h widget.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmasteroid.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmcons.h \
+	scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h scmimage.h \
+	scmimagevector.h scmlet.h scmlist.h scmload.h scmmissile.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmuniverse.h scmuniversetype.h \
+	scmverbose.h widgetbanner.h widgetbutton.h widgetlabel.h \
+	widgetlist.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmmovingobj.o: scmmovingobj.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmnumber.o: scmnumber.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmproc.o: scmproc.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmquote.o: scmquote.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmread.o: scmread.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmrepl.o: scmrepl.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmship.o: scmship.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmshiptype.o: scmshiptype.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmspecial.o: scmspecial.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmstring.o: scmstring.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmsymbol.o: scmsymbol.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmteam.o: scmteam.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmtelnet.o: scmtelnet.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmuniverse.o: scmuniverse.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmuniversetype.o: scmuniversetype.c matanza.h ../config.h getopt.h \
+	mmp.h machine.h ship.h universe.h imagevector.h image.h \
+	anglecache.h scm.h movingobj.h team.h sub.h connection.h \
+	network.h shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmverbose.o: scmverbose.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmwidget.o: scmwidget.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+scmwidgetplay.o: scmwidgetplay.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+scmwindow.o: scmwindow.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+ship.o: ship.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+shipcrash.o: shipcrash.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+shipkey.o: shipkey.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+shipprint.o: shipprint.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+shiptype.o: shiptype.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+sub.o: sub.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+team.o: team.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+telnet.o: telnet.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+universe.o: universe.c matanza.h ../config.h getopt.h mmp.h machine.h \
+	ship.h universe.h imagevector.h image.h anglecache.h scm.h \
+	movingobj.h team.h sub.h connection.h network.h shiptype.h \
+	missile.h universetype.h widgetplay.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h window.h telnet.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmconnection.h \
+	scmcons.h scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h \
+	scmimage.h scmimagevector.h scmlet.h scmlist.h scmload.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwindow.h scmwidget.h \
+	scmwidgetplay.h windowbuffer.h widget.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetplaydraw.h \
+	widgetplaykey.h widgetrender.h widgettext.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+universetype.o: universetype.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+widget.o: widget.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+widgetbanner.o: widgetbanner.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+widgetbutton.o: widgetbutton.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+widgetlabel.o: widgetlabel.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+widgetlist.o: widgetlist.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+widgetplay.o: widgetplay.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+widgetplaydraw.o: widgetplaydraw.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+widgetplaykey.o: widgetplaykey.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+widgetrender.o: widgetrender.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+widgettext.o: widgettext.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+widgetwindow.o: widgetwindow.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	movingobj.h scm.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h asteroid.h widgetplay.h \
+	widgetwindow.h telnet.h widget.h machinedefault.h \
+	machineimage.h machineinit.h machinejoin.h machineshipadd.h \
+	machineshipcmd.h machinefunc.h distance.h message.h \
+	asciirender.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmasteroid.h scmbegin.h scmbool.h \
+	scmcase.h scmchar.h scmclosure.h scmcond.h scmcons.h \
+	scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h scmimage.h \
+	scmimagevector.h scmlet.h scmlist.h scmload.h scmmissile.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwidgetwindow.h widgetbanner.h \
+	widgetbutton.h widgetlabel.h widgetlist.h widgetrender.h \
+	widgettext.h menu0.h menu1.h animation000.h animation001.h \
+	animation002.h animationfire.h common.h
+widgetwindowbuffer.o: widgetwindowbuffer.c matanza.h ../config.h \
+	getopt.h mmp.h machine.h ship.h universe.h imagevector.h \
+	image.h anglecache.h movingobj.h scm.h team.h sub.h \
+	connection.h network.h shiptype.h missile.h universetype.h \
+	asteroid.h widgetplay.h widgetwindow.h telnet.h widget.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h palette.h shipcrash.h shipkey.h \
+	renderrotate.h renderimage.h dlist.h scmasteroid.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h scmcons.h \
+	scmdefine.h scmenv.h scmeq.h scmfile.h scmif.h scmimage.h \
+	scmimagevector.h scmlet.h scmlist.h scmload.h scmmissile.h \
+	scmmovingobj.h scmnumber.h scmproc.h scmquote.h scmread.h \
+	scmrepl.h scmship.h scmshiptype.h scmspecial.h scmstring.h \
+	scmsymbol.h scmteam.h scmtelnet.h scmuniverse.h \
+	scmuniversetype.h scmverbose.h scmwidgetwindow.h \
+	scmwidgetplay.h widgetbanner.h widgetbutton.h widgetlabel.h \
+	widgetlist.h widgetplaydraw.h widgetplaykey.h widgetrender.h \
+	widgettext.h widgetwindowbuffer.h menu0.h menu1.h \
+	animation000.h animation001.h animation002.h animationfire.h \
+	common.h
+window.o: window.c matanza.h ../config.h getopt.h mmp.h machine.h ship.h \
+	universe.h imagevector.h image.h anglecache.h scm.h movingobj.h \
+	team.h sub.h connection.h network.h shiptype.h missile.h \
+	universetype.h widgetplay.h machinedefault.h machineimage.h \
+	machineinit.h machinejoin.h machineshipadd.h machineshipcmd.h \
+	machinefunc.h distance.h message.h asciirender.h window.h \
+	telnet.h palette.h shipcrash.h shipkey.h renderrotate.h \
+	renderimage.h dlist.h scmbegin.h scmbool.h scmcase.h scmchar.h \
+	scmclosure.h scmcond.h scmconnection.h scmcons.h scmdefine.h \
+	scmenv.h scmeq.h scmfile.h scmif.h scmimage.h scmimagevector.h \
+	scmlet.h scmlist.h scmload.h scmmovingobj.h scmnumber.h \
+	scmproc.h scmquote.h scmread.h scmrepl.h scmship.h \
+	scmshiptype.h scmspecial.h scmstring.h scmsymbol.h scmteam.h \
+	scmtelnet.h scmuniverse.h scmuniversetype.h scmverbose.h \
+	scmwindow.h scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+windowbuffer.o: windowbuffer.c matanza.h ../config.h getopt.h mmp.h \
+	machine.h ship.h universe.h imagevector.h image.h anglecache.h \
+	scm.h movingobj.h team.h sub.h connection.h network.h \
+	shiptype.h missile.h universetype.h widgetplay.h \
+	machinedefault.h machineimage.h machineinit.h machinejoin.h \
+	machineshipadd.h machineshipcmd.h machinefunc.h distance.h \
+	message.h asciirender.h window.h telnet.h palette.h shipcrash.h \
+	shipkey.h renderrotate.h renderimage.h dlist.h scmbegin.h \
+	scmbool.h scmcase.h scmchar.h scmclosure.h scmcond.h \
+	scmconnection.h scmcons.h scmdefine.h scmenv.h scmeq.h \
+	scmfile.h scmif.h scmimage.h scmimagevector.h scmlet.h \
+	scmlist.h scmload.h scmmovingobj.h scmnumber.h scmproc.h \
+	scmquote.h scmread.h scmrepl.h scmship.h scmshiptype.h \
+	scmspecial.h scmstring.h scmsymbol.h scmteam.h scmtelnet.h \
+	scmuniverse.h scmuniversetype.h scmverbose.h scmwindow.h \
+	scmwidget.h scmwidgetplay.h windowbuffer.h widget.h \
+	widgetbanner.h widgetbutton.h widgetlabel.h widgetlist.h \
+	widgetplaydraw.h widgetplaykey.h widgetrender.h widgettext.h \
+	menu0.h menu1.h animation000.h animation001.h animation002.h \
+	animationfire.h common.h
+
+info-am:
+info: info-am
+dvi-am:
+dvi: dvi-am
+check-am: all-am
+check: check-am
+installcheck-am:
+installcheck: installcheck-am
+install-exec-am: install-binPROGRAMS
+install-exec: install-exec-am
+
+install-data-am:
+install-data: install-data-am
+
+install-am: all-am
+	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+install: install-am
+uninstall-am: uninstall-binPROGRAMS
+uninstall: uninstall-am
+all-am: Makefile $(PROGRAMS)
+all-redirect: all-am
+install-strip:
+	$(MAKE) $(AM_MAKEFLAGS) AM_INSTALL_PROGRAM_FLAGS=-s install
+installdirs:
+	$(mkinstalldirs)  $(DESTDIR)$(bindir)
+
+
+mostlyclean-generic:
+
+clean-generic:
+
+distclean-generic:
+	-rm -f Makefile $(CONFIG_CLEAN_FILES)
+	-rm -f config.cache config.log stamp-h stamp-h[0-9]*
+
+maintainer-clean-generic:
+mostlyclean-am:  mostlyclean-binPROGRAMS mostlyclean-compile \
+		mostlyclean-tags mostlyclean-generic
+
+mostlyclean: mostlyclean-am
+
+clean-am:  clean-binPROGRAMS clean-compile clean-tags clean-generic \
+		mostlyclean-am
+
+clean: clean-am
+
+distclean-am:  distclean-binPROGRAMS distclean-compile distclean-tags \
+		distclean-generic clean-am
+
+distclean: distclean-am
+
+maintainer-clean-am:  maintainer-clean-binPROGRAMS \
+		maintainer-clean-compile maintainer-clean-tags \
+		maintainer-clean-generic distclean-am
+	@echo "This command is intended for maintainers to use;"
+	@echo "it deletes files that may require special tools to rebuild."
+
+maintainer-clean: maintainer-clean-am
+
+.PHONY: mostlyclean-binPROGRAMS distclean-binPROGRAMS clean-binPROGRAMS \
+maintainer-clean-binPROGRAMS uninstall-binPROGRAMS install-binPROGRAMS \
+mostlyclean-compile distclean-compile clean-compile \
+maintainer-clean-compile tags mostlyclean-tags distclean-tags \
+clean-tags maintainer-clean-tags distdir info-am info dvi-am dvi check \
+check-am installcheck-am installcheck install-exec-am install-exec \
+install-data-am install-data install-am install uninstall-am uninstall \
+all-redirect all-am all installdirs mostlyclean-generic \
+distclean-generic clean-generic maintainer-clean-generic clean \
+mostlyclean distclean maintainer-clean
+
+
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:

@@ -1,0 +1,176 @@
+0. Introduction
+
+We  expect a  consistent coding  style  across all  of Matanza's  source
+files: the one described in this file.
+
+The ideas in  this file are subject  to discusion by the  members of the
+Matanza Core.
+
+1. Source layout
+
+GNU's Coding Standards must be followed as closely as possible.
+
+The following indentation is right:
+
+void
+function_set ( int a )
+{
+  /* Here goes a silly comment that explains something useful and is broken
+   * into lines like this. */
+
+  if (!a)
+    {
+      printf("Bad.\n");
+      exit(EXIT_FAILURE);
+    }
+  else
+    printf("Hey.\n");
+}
+
+Note that for multiple-words functions (most  of them), we write them as
+mat_foo_bar_set,  rather than  MatFooBarSet.   Also note  that we  don't
+leave spaces after function calls but do leave spaces after control-flow
+keywords (such as if or for).
+
+Preprocessor defines must always be defined entirely in uppercase.
+
+Try to  enter numerical constants directly  into your program as  few as
+possible.  Instead,  define them  as preprocessor  macros and  given the
+appropriate names.  Even if you don't  expect their values to ever vary,
+this should make  the code much more readable as  it becomes now obvious
+why the given numbers were used.
+
+To comment out code  you must use #if 0 / #endif  around it.  This makes
+it easy  to add  it or remove  it, without having  to care  about nested
+comments.
+
+TODO:  Add a note on TODO and XXXX.
+
+2. Object Oriented Programming
+
+Matanza's source code must be  object oriented: the important structures
+or modules must be declared in their own files.
+
+For each  important structure, you must  declare one header file  with a
+typedef for the structure.  The actual definition for the structure must
+never go in the header file: all access to the function's fields must be
+provided through  functions defined  in the  associated code  file.  The
+header file must only include the typedef, #defines for constants needed
+and the prototypes for the object's functions.
+
+This is to  provide real encapsulation of data.  We  can always begin to
+inline critic functions if necessary.
+
+The C  source file can only  declare public symbols for  those listed in
+the header file.  All other symbols must be declared static.  The public
+functions must  begin with  the prefix mat_object_  where object  is the
+name of your object.
+
+Your object must be named as MatObject.   Both your type as well as your
+structure's name must have the same name.  Never typedef your objects as
+pointers, we want to be able to tell pointers from structures easily.
+
+The functions ending in _get must never  modify the object in any way so
+we  can use  them  in  our assertions  and  don't  change our  program's
+behaviour when we build it without assertions.
+
+If  you provide  constructors  and destructors,  they  should be  called
+mat_object_new  and mat_object_free.   If you  want to  provide multiple
+constructors  (destructors),  they  must  be  called  mat_object_new_XXX
+(mat_object_free_XXX).  It is recommended that you call the one that you
+expect people to use the most mat_object_new (mat_object_free).
+
+3. Assertions
+
+Use them as much as you can.
+
+It doesn't matter  if you think it  will make the code slow:  we will be
+able to remove them in our stable public releases.
+
+For the assertions use the ASSERT macro.
+
+Also, it is okay  to fill your code with calls to  the VERBOSE macro for
+important sections.  However, try not to  make way too many calls to it:
+it could turn  out to be extremely noisy.  Basically,  leave the VERBOSE
+calls in  sections that you think  might give trouble in  the future but
+remove it from well-tested stable sections.
+
+The only exception  to the assert-everything rule is  complex deep loops
+where the assertions would make the code significantly slow.
+
+In  your  assertions  you  are  only  allowed  to  call  Matanza-defined
+functions that end  in _get and standard functions  that obviously don't
+have side effects.
+
+However, do fill with assertions all  the complex code.  It is suggested
+that you add assertions for both pre and post conditions.
+
+Having  Matanza full  of  assertions  has helped  us  find  bugs a  lot.
+Debugging Matanza is as funny as building it with assertions, running it
+under a  debugger with a breakpoint  set on the exit  function (to catch
+the program's state  should an assertion fail) and  playing.  Sure beats
+most debugging situations.
+
+So don't forget this: Use assertions as much as you can.
+
+4. Use of CVS
+
+The rule for  CVS is commit whenever you make  even the smallest change.
+Try never to commit multiple changes at the same time.
+
+Actually, it is okay  to submit a lot of changes  in a batch.  Otherwise
+it would be way too complicated to  work in Matanza offline.  But if you
+can, try to follow the above rule.
+
+If you  have doubts  about whether  your changes  are ok,  consult other
+members of the core for suggestions before actually submitting them.
+
+Never change just the indentation of a line.  Even if the indentation is
+obviously wrong, you  don't want to change that line  if everything else
+is fine with it.  Doing this would  defeat the purpose of using a system
+to control versions.
+
+5. Commenting Code
+
+There are two  things that you must never leave  uncommented: the fields
+in your structure and the prototypes in your C header file.
+
+It is considered a serious bug when the above rule is violated.
+
+Other than  that, you shouldn't really  comment your code: it  should be
+written in a way that it is obvious.
+
+The problem  with overcommented code  is that  when one needs  to change
+something, one  needs to read  the whole  comments and update  them.  In
+this situation,  it is  preferable to throw  the paragraphs  of comments
+away.
+
+When you comment your code say what it does but not how it does it.  How
+it does it is very silly as your  code already shows that in a much more
+precise way.
+
+On the  other hand, if you  use complex theorems to  optimize things, it
+would be nice  if you could explain  where you got your  lovely ideas so
+other programmers can  understand all the work you did  in order to know
+that writing the code in your non-obvious way would still work.
+
+6. Debugging
+
+This section does not deeply affect  the style of Matanza's source code,
+but gives you advice on how to debug it.
+
+The prefered  way of debugging  is using assertions  everywhere (through
+the ASSERT macro).   When that is not enough, you  are encouraged to use
+the  VERBOSE macro  to have  Matanza print  information about  its state
+(you'll need  to define MATANZA_VERBOSE  to 1 when building  and execute
+matanza with the --verbose option).
+
+When none  of this  works, it  is okay  to use  GDB or  another system's
+debugger (if you are unlucky to be outside of Unix).
+
+To check for  memory leaks, we advice you to  use the wonderful CCMalloc
+package.  You will want to pass Matanza the undocumented (at least not
+appearing in the --help message) --free-at-exit parameter.
+
+You might also  want to build Matanza with Bruce  Perens' Electric Fence
+to have it check for memory corruption.
