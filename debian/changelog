@@ -1,3 +1,76 @@
+matanza (0.13+ds1-1) unstable; urgency=low
+
+  * QA upload.
+    + Set maintainer to QA group.
+    + Acknowledge NMUs. (Closes: #383733, #340496)
+  * Repack tar ball without all generated files. (Closes: #490600)
+  * Disable watch file since upstream homepage seems to
+    be gone. (Closes: #462828)
+  * Move Homepage to dedicated field.
+  * Fix some manpage formatting errors.
+  * Some debian/rules cleanup.
+  * Fix "array subscript is above array bounds" warning.
+  * Fix definition of VERBOSE macro to avoid a huge number of
+    compiler warnings.
+
+ -- Frank Lichtenheld <djpig@debian.org>  Wed, 30 Jul 2008 16:26:26 +0200
+
+matanza (0.13-3.4) unstable; urgency=low
+
+  * Non-maintainer upload
+  * Updated build depends due to texlive transition (Closes: #421204)
+
+ -- Michael Tautschnig <tautschn@model.in.tum.de>  Fri, 18 May 2007 23:12:46 +0200
+
+matanza (0.13-3.3) unstable; urgency=high
+
+  * NMU.
+  * Remove i386 .o files (shipped in orig.tar.gz) in clean target. 
+    closes: #384566.
+
+ -- Clint Adams <schizo@debian.org>  Thu, 14 Sep 2006 23:23:47 -0400
+
+matanza (0.13-3.2) unstable; urgency=low
+
+  * Non-maintainer upload fixing lots of bugs (Closes: #335274)
+  * Use debhelper compatability version 5
+  * Revamp and modernize debian/rules, uses debhelper more
+  * Add homepage to the long description
+  * Update the manual page and refer users to the README (Closes: #340496)
+  * Move binaries to /usr/games
+  * Bump Standards-Version
+  * Make sure to rebuild matanza.c and ai.c (build-dep on tetex-bin)
+  * Build-depend on libpng12-dev
+  * Update copyright information, including FSF address
+  * Recommend the virtual package telnet-client as well
+  * Install NEWS/TODO and the example ships, map and config
+  * Use $(MAKE) instead of make
+
+ -- Paul Wise <pabs3@bonedaddy.net>  Mon, 24 Apr 2006 12:28:41 +0800
+
+matanza (0.13-3.1) unstable; urgency=low
+
+  * NMU
+  * Rebuild with libpng dependancies updated (Closes: #328352)
+
+ -- Anand Kumria <wildfire@progsoc.org>  Sat, 29 Oct 2005 17:54:26 +1000
+
+matanza (0.13-3) unstable; urgency=low
+
+  * Add more telnet clients as recommended packages. 
+
+ -- Polkan Alexis Garcia Rodriguez <pagarcia@slcolombia.org>  Tue, 15 Mar 2005 12:27:14 -0500
+
+matanza (0.13-2) unstable; urgency=low
+
+  * Add more telnet clients as dependencies (closes: #281723)
+  * Delete i386 binary in package sources and add clean and cleanall
+    instructions to debian/rules (closes: #282081)
+  * Add to program's Makefile more clear sentences to delete previous objects
+    and binaries.
+
+ -- Polkan Alexis Garcia Rodriguez <pagarcia@slcolombia.org>  Mon, 22 Nov 2004 15:08:44 -0500
+
 matanza (0.13-1) unstable; urgency=low
 
   * Initial Release.

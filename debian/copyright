@@ -1,13 +1,18 @@
 This package was debianized by Polkan Alexis Garcia Rodriguez <pagarcia@slcolombia.org> on
 Mon, 28 Jun 2004 15:19:37 -0500.
 
-It was downloaded from http://freshmeat.net/redir/matanza/6227/url_tgz/matanza-0.13.tar.gz
+It was downloaded from http://bachue.com/matanza/
 
-Upstream Author: Alejandro Forero Cuervo <alejo@bachue.com>
+Author:
 
-This package has many utilities that are GPL or close to GPL code.
+    Alejandro Forero Cuervo <alejo@bachue.com>
 
-Copyright (C) 1998,1999,2000,2001,2002,2003,2004 Craig Small <csmall@debian.org>
+Copyright:
+
+    Copyright (C) 1999, 2000 Alejandro Forero Cuervo
+    Copyright (c) 1998, 1999, 2000 Thai Open Source Software Center Ltd
+
+Licence:
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,8 +26,8 @@ Copyright (C) 1998,1999,2000,2001,2002,2003,2004 Craig Small <csmall@debian.org>
 
     You should have received a copy of the GNU General Public License
     along with this package; if not, write to the Free Software
-    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-    02111-1307, USA.
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+    02110-1301, USA
 
 On Debian systems, the complete text of the GNU General
 Public License can be found in `/usr/share/common-licenses/GPL'.
