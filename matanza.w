@@ -6594,10 +6594,10 @@ then throw a lot of warnings during compilation, but will work.
 
 @<Global variables@>=
 #if MATANZA_VERBOSE
-#define VERBOSE(...) if (arg_verbose) printf(__VA_ARGS__)
+#define VERBOSE if (arg_verbose) printf
 int arg_verbose = 0;
 #else
-#define VERBOSE(...)
+#define VERBOSE
 #endif
 
 @
@@ -9193,6 +9193,7 @@ will be projected to col_min and the maximum to col_max.
   free(mat_ship_palette[0]);
   free(mat_ship_palette[1]);
   free(mat_ship_palette[2]);
+  free(mat_ship_palette[3]);
 }
 
 @

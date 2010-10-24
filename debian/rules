@@ -12,8 +12,10 @@ else
 	CFLAGS += -O2
 endif
 
+include /usr/share/quilt/quilt.make
+
 build: build-stamp
-build-stamp:
+build-stamp:	${QUILT_STAMPFN}
 	dh_testdir
 	cp -f /usr/share/misc/config.sub .
 	cp -f /usr/share/misc/config.guess .
@@ -27,6 +29,7 @@ clean:
 	[ ! -f Makefile ] || $(MAKE) distclean
 	rm -f matanza.c ai.c config.sub config.guess build-stamp
 	rm -f *.o
+	$(MAKE) -f debian/rules unpatch
 	dh_clean
 
 install: build

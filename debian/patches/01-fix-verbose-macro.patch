@@ -1,0 +1,30 @@
+Description: Fix a couple of compiler warnings.
+ - fix the definition of the VERBOSE macro to avoid many warnings
+ - fix an "array subscript is above array bounds" warning
+Forwarded: no
+Author: Frank Lichtenheld <djpig@debian.org>
+Last-Update: 2010-10-24
+
+--- a/matanza.w
++++ b/matanza.w
+@@ -6594,10 +6594,10 @@
+ 
+ @<Global variables@>=
+ #if MATANZA_VERBOSE
+-#define VERBOSE if (arg_verbose) printf
++#define VERBOSE(...) if (arg_verbose) printf(__VA_ARGS__)
+ int arg_verbose = 0;
+ #else
+-#define VERBOSE
++#define VERBOSE(...)
+ #endif
+ 
+ @
+@@ -9193,7 +9193,6 @@
+   free(mat_ship_palette[0]);
+   free(mat_ship_palette[1]);
+   free(mat_ship_palette[2]);
+-  free(mat_ship_palette[3]);
+ }
+ 
+ @
