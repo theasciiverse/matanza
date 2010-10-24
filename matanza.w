@@ -2402,7 +2402,7 @@ void mat_animation_cancel     ( MatConnection *p, int x );
 @
 @<Display label@>=
 {
-  printf("-=> Matanza has been succesfully started.\n");
+  printf("-=> Matanza has been successfully started.\n");
   printf("-=> Connect to port %d to play.\n", arg_port);
 }
 
