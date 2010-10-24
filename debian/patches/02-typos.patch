@@ -1,0 +1,16 @@
+Description: Fix a typo.
+Forwarded: no
+Author: Peter Pentchev <roam@ringlet.net>
+Last-Update: 2010-10-24
+
+--- a/matanza.w
++++ b/matanza.w
+@@ -2402,7 +2402,7 @@
+ @
+ @<Display label@>=
+ {
+-  printf("-=> Matanza has been succesfully started.\n");
++  printf("-=> Matanza has been successfully started.\n");
+   printf("-=> Connect to port %d to play.\n", arg_port);
+ }
+ 
