@@ -1,0 +1,70 @@
+# This graphic must be 116 x 54 characters big.  If you modify it and come
+# up with anything interesting, send it to <bachue@bachue.com> so it gets
+# included with the next release.  We are planning to distribute a big list
+# of ships and allow the players to choose from among them.
+#
+# For the moment, you must make sure the sizes and positions of the
+# missiles does -not- change.  In the future, you'll be able to place them
+# anywhere.
+#
+# Lines begining with `#' get ignored.
+#
+# To try your new image, use the `--ship-img' argument when you run Matanza
+# (for example: matanza --ship-img ship.txt).
+#
+# By the way, to edit this file under Vim, you'll want to use :set nowrap
+# to have it not perform line wrapping.
+
+
+
+                                                         **
+                                                         **
+                                                         **
+                                                         **
+                                                         **
+                                                        ****
+                                                        ****
+                                                       ******
+                                                      ********
+                                                    ************
+                                                   **************
+                  XXX                             ****************                             XXX
+                XXXXXXX                           ****************                           XXXXXXX
+                XXXXXXX                          ********..********                          XXXXXXX
+                XXXXXXX                          *******....*******                          XXXXXXX
+                XXXXXXX                         *******......*******                         XXXXXXX
+                XXXXXXX                         *******......*******                         XXXXXXX
+                XXXXXXX        1                ******........******                2        XXXXXXX
+                XXXXXXX        1               *******........*******               2        XXXXXXX
+                XXXXXXX        1               *******........*******               2        XXXXXXX
+                XXXXXXX       111              *******........*******              222       XXXXXXX
+                XXXXXXX       111             ********........********             222       XXXXXXX
+                XXXXXXX*******************************........*******************************XXXXXXX
+                XXXXXXX********************************......********************************XXXXXXX
+                XXXXXXX*********************************....*********************************XXXXXXX
+                XXXXXXX       111             ***********..***********             222       XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX**********************************************************************XXXXXXX
+                XXXXXXX**********************************************************************XXXXXXX
+                XXXXXXX**********************************************************************XXXXXXX
+                XXXXXXX**********************************************************************XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX       111             ************************             222       XXXXXXX
+                XXXXXXX        1                ********************                2        XXXXXXX
+                  XXX                             ****************                             XXX
+
+
+
+
