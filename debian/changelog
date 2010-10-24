@@ -1,3 +1,17 @@
+matanza (0.13+ds1-2) UNRELEASED; urgency=low
+
+  TODO: policy 3.9.1
+  TODO: dpkg-buildflags
+  TODO: debhelper 8
+  TODO: DEP 5 copyright
+  TODO: DEP 3 patches
+  TODO: Vcs-* tags
+  TODO: appease lintian
+
+  * New maintainer.  Closes: #442045
+
+ -- Peter Pentchev <roam@ringlet.net>  Sun, 24 Oct 2010 18:56:37 +0300
+
 matanza (0.13+ds1-1) unstable; urgency=low
 
   * QA upload.
