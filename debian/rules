@@ -14,46 +14,25 @@ export CFLAGS CPPFLAGS LDFLAGS
 
 build: build-stamp
 build-stamp:
-	dh_testdir
+	dh build --before auto_configure
 	cp -f /usr/share/misc/config.sub .
 	cp -f /usr/share/misc/config.guess .
-	./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr --bindir=/usr/games
-	$(MAKE) CFLAGS="$(CFLAGS)"
+	dh_auto_configure -- --bindir=/usr/games
+	dh build --before auto_build
+	dh_auto_build -- CFLAGS="$(CFLAGS)"
+	dh build --remaining
 	touch build-stamp
 
 clean:
-	dh_testdir
-	dh_testroot
-	[ ! -f Makefile ] || $(MAKE) distclean
-	rm -f matanza.c ai.c config.sub config.guess
-	rm -f *.o
-	dh_clean
+	dh $@
 
 install: build
-	dh_testdir
-	dh_testroot
-	dh_prep
-	$(MAKE) install DESTDIR=$(CURDIR)/debian/matanza
+	dh $@
 
 binary: binary-indep binary-arch
 binary-indep: install
 binary-arch: install
-	dh_testdir
-	dh_testroot
-	dh_installchangelogs ChangeLog
-	dh_installdocs
-	dh_installexamples
-	dh_installman
-	dh_link
-	dh_strip
-	dh_compress 
-	dh_fixperms
-	dh_makeshlibs
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
+	dh $@
 
 .PHONY: build clean install binary binary-arch binary-indep
 
