@@ -25,14 +25,14 @@ clean:
 	dh_testdir
 	dh_testroot
 	[ ! -f Makefile ] || $(MAKE) distclean
-	rm -f matanza.c ai.c config.sub config.guess build-stamp
+	rm -f matanza.c ai.c config.sub config.guess
 	rm -f *.o
 	dh_clean
 
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k
+	dh_prep
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/matanza
 
 binary: binary-indep binary-arch
