@@ -7,35 +7,19 @@ CFLAGS:=	$(shell dpkg-buildflags --get CFLAGS)
 CPPFLAGS:=	$(shell dpkg-buildflags --get CPPFLAGS)
 LDFLAGS:=	$(shell dpkg-buildflags --get LDFLAGS)
 
-DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
-DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 CFLAGS += -Wall
 export CFLAGS CPPFLAGS LDFLAGS
 
-build: build-stamp
-build-stamp:
-	dh build --before auto_configure
+# Note: this could be simplified even further using --with autotools_dev,
+# but it would require another repacking to bring back config.{guess,sub} :)
+#
+override_dh_auto_configure:
 	cp -f /usr/share/misc/config.sub .
 	cp -f /usr/share/misc/config.guess .
 	dh_auto_configure -- --bindir=/usr/games
-	dh build --before auto_build
+
+override_dh_auto_build:
 	dh_auto_build -- CFLAGS="$(CFLAGS)"
-	dh build --remaining
-	touch build-stamp
 
-clean:
+%:
 	dh $@
-
-install: build
-	dh $@
-
-binary: binary-indep binary-arch
-binary-indep: install
-binary-arch: install
-	dh $@
-
-.PHONY: build clean install binary binary-arch binary-indep
-
-#Local variables:
-#mode: makefile
-#End:
