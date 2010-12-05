@@ -6,6 +6,8 @@ Uploaders: Peter Pentchev <roam@ringlet.net>
 Build-Depends: debhelper (>= 5), autotools-dev, texlive-extra-utils, libpng12-dev
 Standards-Version: 3.9.1
 Homepage: http://bachue.com/matanza/
+Vcs-Git: git://git.debian.org/git/pkg-games/matanza.git
+Vcs-Browser: http://git.debian.org/?p=pkg-games/matanza.git
 
 Package: matanza
 Architecture: any

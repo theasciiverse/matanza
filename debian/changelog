@@ -2,7 +2,6 @@ matanza (0.13+ds1-2) UNRELEASED; urgency=low
 
   TODO: dpkg-buildflags
   TODO: debhelper 8
-  TODO: Vcs-* tags
 
   * New maintainer.  Closes: #442045
   * Use quilt for patch management.
@@ -12,6 +11,7 @@ matanza (0.13+ds1-2) UNRELEASED; urgency=low
   * Refer to the GPL-2 file instead of the GPL symlink.
   * Bump Standards-Version to 3.9.1 with no changes.
   * Convert the copyright file to the DEP 5 format and add my notice.
+  * Add the Vcs-Git and Vcs-Browser source control fields.
 
  -- Peter Pentchev <roam@ringlet.net>  Sun, 24 Oct 2010 18:56:37 +0300
 
