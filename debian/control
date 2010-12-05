@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
 Uploaders: Peter Pentchev <roam@ringlet.net>
 Build-Depends: debhelper (>= 5), autotools-dev, texlive-extra-utils, libpng12-dev
-Standards-Version: 3.7.2
+Standards-Version: 3.9.1
 Homepage: http://bachue.com/matanza/
 
 Package: matanza

@@ -1,11 +1,9 @@
 matanza (0.13+ds1-2) UNRELEASED; urgency=low
 
-  TODO: policy 3.9.1
   TODO: dpkg-buildflags
   TODO: debhelper 8
   TODO: DEP 5 copyright
   TODO: Vcs-* tags
-  TODO: appease lintian
 
   * New maintainer.  Closes: #442045
   * Use quilt for patch management.
@@ -13,6 +11,7 @@ matanza (0.13+ds1-2) UNRELEASED; urgency=low
     the main matanza.w source.
   * Convert to the 3.0 (quilt) source format with bzip2 compression.
   * Refer to the GPL-2 file instead of the GPL symlink.
+  * Bump Standards-Version to 3.9.1 with no changes.
 
  -- Peter Pentchev <roam@ringlet.net>  Sun, 24 Oct 2010 18:56:37 +0300
 
