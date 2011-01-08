@@ -1,6 +1,6 @@
-Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=135
-Name: matanza
-Maintainer: Alejandro Forero Cuervo <alejo@bachue.com>
+Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=153
+Upstream-Name: matanza
+Upstream-Contact: Alejandro Forero Cuervo <alejo@bachue.com>
 
 Files: *
 Copyright: 1999, 2000  Alejandro Forero Cuervo
@@ -31,7 +31,7 @@ Copyright: 2004, 2005  Polkan Alexis Garcia Rodriguez <pagarcia@slcolombia.org>
 	   2006  Clint Adams <schizo@debian.org>
 	   2007  Michael Tautschnig <tautschn@model.in.tum.de>
 	   2008  Frank Lichtenheld <djpig@debian.org>
-	   2010  Peter Pentchev <roam@ringlet.net>
+	   2010, 2011  Peter Pentchev <roam@ringlet.net>
 License: GPL-2+
 
 Licence: GPL-2+

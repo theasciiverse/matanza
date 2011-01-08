@@ -14,7 +14,7 @@ matanza (0.13+ds1-2) experimental; urgency=low
   * Bump the debhelper compatibility version to 8 and minimize the rules
     file using the dh(1) helper and debhelper override targets.
 
- -- Peter Pentchev <roam@ringlet.net>  Mon, 06 Dec 2010 00:05:10 +0200
+ -- Peter Pentchev <roam@ringlet.net>  Sun, 09 Jan 2011 01:43:14 +0200
 
 matanza (0.13+ds1-1) unstable; urgency=low
 
