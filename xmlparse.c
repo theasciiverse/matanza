@@ -1488,6 +1488,7 @@ doContent(XML_Parser parser,
 	  return XML_ERROR_BAD_CHAR_REF;
 	if (characterDataHandler) {
 	  XML_Char buf[XML_ENCODE_MAX];
+	  // cppcheck-suppress uninitvar
 	  characterDataHandler(handlerArg, buf, XmlEncode(n, (ICHAR *)buf));
 	}
 	else if (defaultHandler)
