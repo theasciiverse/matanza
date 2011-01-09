@@ -1,2 +1,3 @@
 01-fix-verbose-macro.patch
 02-typos.patch
+03-cppcheck.patch

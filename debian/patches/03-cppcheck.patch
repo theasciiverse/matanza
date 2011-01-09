@@ -1,0 +1,17 @@
+Description: Suppress a cppcheck false positive.
+ The contents of 'buf' is always initialized by the XmlUtf16Encode or
+ the XmlUtf8Encode function, whichever one is invoked.
+Forwarded: no
+Author: Peter Pentchev <roam@ringlet.net>
+Last-Update: 2011-01-09
+
+--- a/xmlparse.c
++++ b/xmlparse.c
+@@ -1488,6 +1488,7 @@
+ 	  return XML_ERROR_BAD_CHAR_REF;
+ 	if (characterDataHandler) {
+ 	  XML_Char buf[XML_ENCODE_MAX];
++	  // cppcheck-suppress uninitvar
+ 	  characterDataHandler(handlerArg, buf, XmlEncode(n, (ICHAR *)buf));
+ 	}
+ 	else if (defaultHandler)

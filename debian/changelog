@@ -13,8 +13,9 @@ matanza (0.13+ds1-2) experimental; urgency=low
     and LDFLAGS.
   * Bump the debhelper compatibility version to 8 and minimize the rules
     file using the dh(1) helper and debhelper override targets.
+  * Add the 03-cppcheck patch to suppress a cppcheck false positive.
 
- -- Peter Pentchev <roam@ringlet.net>  Sun, 09 Jan 2011 01:43:14 +0200
+ -- Peter Pentchev <roam@ringlet.net>  Sun, 09 Jan 2011 18:12:09 +0200
 
 matanza (0.13+ds1-1) unstable; urgency=low
 
