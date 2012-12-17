@@ -1,6 +1,7 @@
-Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=153
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: matanza
 Upstream-Contact: Alejandro Forero Cuervo <alejo@bachue.com>
+Source: http://web.archive.org/web/20071226080243/http://bachue.com/matanza/
 
 Files: *
 Copyright: 1999, 2000  Alejandro Forero Cuervo
@@ -32,9 +33,10 @@ Copyright: 2004, 2005  Polkan Alexis Garcia Rodriguez <pagarcia@slcolombia.org>
 	   2007  Michael Tautschnig <tautschn@model.in.tum.de>
 	   2008  Frank Lichtenheld <djpig@debian.org>
 	   2010, 2011  Peter Pentchev <roam@ringlet.net>
+	   2012  Bart Martens <bartm@debian.org>
 License: GPL-2+
 
-Licence: GPL-2+
+License: GPL-2+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
