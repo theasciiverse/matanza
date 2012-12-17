@@ -1,0 +1,22 @@
+Description: Fix build with libpng >= 1.5
+Author: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
+Bug-Debian: http://bugs.debian.org/636984
+Forwarded: no
+Reviewed-By: Boris Pek <tehnick-8@mail.ru>
+Last-Update: 2012-12-17
+
+--- a/matanza.w
++++ b/matanza.w
+@@ -9822,8 +9822,11 @@
+       png_destroy_read_struct(&png_ptr, NULL, NULL);
+       exit(EXIT_FAILURE);
+     }
+-
++#if PNG_LIBPNG_VER_MAJOR >= 1 && PNG_LIBPNG_VER_MINOR >= 4
++  if (setjmp(png_jmpbuf((png_ptr))))
++#else
+   if (setjmp(png_ptr->jmpbuf))
++#endif
+     {
+       fprintf(stderr, "%s: %s\n", program_name, strerror(errno));
+       png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
