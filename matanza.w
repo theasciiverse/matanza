@@ -1506,7 +1506,7 @@ player_crash_handler ( MatMovingObj *p, MatMovingObj *obj )
   if (obj->info.ast.health <= 0)
     @<Asteroid |obj| has been broken@>@;
   else
-    sprintf(message_get(b->info.bullet.src), mat_bullets_hit_ast[b->info.bullet.type]);
+    sprintf(message_get(b->info.bullet.src), "%s", mat_bullets_hit_ast[b->info.bullet.type]);
 }
 
 @
