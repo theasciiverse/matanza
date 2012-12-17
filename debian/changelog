@@ -1,3 +1,20 @@
+matanza (0.13+ds1-3) experimental; urgency=low
+
+  * Team upload.
+  * Bump Standards-Version to 3.9.4 (was 3.9.1).
+  * Update debian/copyright in according to Copyright format 1.0.
+  * Add patch debian/patches/04-format.patch:
+    fix FTBFS with GCC >= 4.7 and hardening compiler options.
+    (Closes: #675295)
+  * Add patch debian/patches/05-fix-build-with-libpng1.5.patch:
+    fix build with libpng >= 1.5. (Closes: #636984)
+  * Update debian/control:
+    - changed build dependency from libpng12-dev to libpng-dev
+      (Closes: #662427)
+    - updated Homepage field
+
+ -- Boris Pek <tehnick-8@mail.ru>  Mon, 17 Dec 2012 22:39:49 +0200
+
 matanza (0.13+ds1-2) experimental; urgency=low
 
   * New maintainer.  Closes: #442045
