@@ -1,3 +1,11 @@
+matanza (0.13+ds1-4) unstable; urgency=low
+
+  * Team upload.
+  * Move package to unstable: no changes required.
+  * Update Vcs-* fields: fix lintian notes vcs-field-not-canonical.
+
+ -- Boris Pek <tehnick@debian.org>  Sun, 11 Aug 2013 14:10:25 +0300
+
 matanza (0.13+ds1-3) experimental; urgency=low
 
   * Team upload.
