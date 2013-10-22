@@ -1,0 +1,2 @@
+debian/icons/*          usr/share/pixmaps
+debian/matanza.desktop  usr/share/applications

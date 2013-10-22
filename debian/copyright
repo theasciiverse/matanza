@@ -28,14 +28,15 @@ License: GPL-2+
 Files: debian/*
 Copyright: 2004, 2005  Polkan Alexis Garcia Rodriguez <pagarcia@slcolombia.org>
            2005  Anand Kumria <wildfire@progsoc.org>
-	   2006  Paul Wise <pabs3@bonedaddy.net>
-	   2006  Clint Adams <schizo@debian.org>
-	   2007  Michael Tautschnig <tautschn@model.in.tum.de>
-	   2008  Frank Lichtenheld <djpig@debian.org>
-	   2010, 2011  Peter Pentchev <roam@ringlet.net>
-	   2012  Bart Martens <bartm@debian.org>
-	   2012  Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
-	   2012  Boris Pek <tehnick-8@mail.ru>
+           2006  Paul Wise <pabs3@bonedaddy.net>
+           2006  Clint Adams <schizo@debian.org>
+           2007  Michael Tautschnig <tautschn@model.in.tum.de>
+           2008  Frank Lichtenheld <djpig@debian.org>
+           2010, 2011  Peter Pentchev <roam@ringlet.net>
+           2012  Bart Martens <bartm@debian.org>
+           2012  Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
+           2012  Boris Pek <tehnick-8@mail.ru>
+           2013  Markus Koschany <apo@gambaru.de>
 License: GPL-2+
 
 License: GPL-2+
