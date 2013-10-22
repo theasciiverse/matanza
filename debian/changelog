@@ -5,8 +5,10 @@ matanza (0.13+ds1-5) unstable; urgency=low
     desktop-integration. (Closes: #726815)
   * Bump compat level to 9 and require debhelper >= 9.
   * Use section 6 for man pages because matanza is a game.
+  * Update debian/control using wrap-and-sort tool.
+  * Update debian/copyright.
 
- -- Markus Koschany <apo@gambaru.de>  Mon, 21 Oct 2013 22:17:35 +0200
+ -- Markus Koschany <apo@gambaru.de>  Tue, 22 Oct 2013 17:47:13 +0300
 
 matanza (0.13+ds1-4) unstable; urgency=low
 
