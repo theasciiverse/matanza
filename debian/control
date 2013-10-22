@@ -2,9 +2,14 @@ Source: matanza
 Section: games
 Priority: extra
 Maintainer: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
-Uploaders: Peter Pentchev <roam@ringlet.net>
-Build-Depends: debhelper (>= 9), dpkg-dev (>= 1.15.7~),
-	autotools-dev, texlive-extra-utils, libpng-dev
+Uploaders:
+ Peter Pentchev <roam@ringlet.net>
+Build-Depends:
+ autotools-dev,
+ debhelper (>= 9),
+ dpkg-dev (>= 1.15.7~),
+ libpng-dev,
+ texlive-extra-utils
 Standards-Version: 3.9.4
 Homepage: http://web.archive.org/web/20071226080243/http://bachue.com/matanza/
 Vcs-Git: git://anonscm.debian.org/pkg-games/matanza.git
@@ -12,8 +17,11 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-games/matanza.git
 
 Package: matanza
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Recommends: telnet | telnet-ssl | inetutils-telnet | putty | telnet-client
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
+Recommends:
+ telnet | telnet-ssl | inetutils-telnet | putty | telnet-client
 Description: Space ascii war game
  Matanza is a multiplayer game.  In it, every player controls a ship cruising
  in space, aiming to destroy the other players (and, eventually, ships

@@ -3,6 +3,8 @@ matanza (0.13+ds1-5) unstable; urgency=low
   * Team upload.
   * Add new icons, a desktop file and a menu file to improve matanza's
     desktop-integration. (Closes: #726815)
+  * Bump compat level to 9 and require debhelper >= 9.
+  * Use section 6 for man pages because matanza is a game.
 
  -- Markus Koschany <apo@gambaru.de>  Mon, 21 Oct 2013 22:17:35 +0200
 
