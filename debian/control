@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
 Uploaders: Peter Pentchev <roam@ringlet.net>
 Build-Depends: autotools-dev,
-               debhelper (>= 9),
+               debhelper (>= 11),
                libpng-dev,
                texlive-extra-utils
 Standards-Version: 4.1.3
