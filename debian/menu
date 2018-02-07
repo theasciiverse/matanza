@@ -1,6 +1,0 @@
-?package(matanza):needs="text" \
- section="Games/Action" \
- title="Matanza" \
- longtitle="Matanza - Space ascii war game" \
- command="/usr/games/matanza && telnet localhost 7993" \
- icon="/usr/share/pixmaps/matanza.xpm"
