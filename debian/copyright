@@ -1,7 +1,7 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: matanza
 Upstream-Contact: Alejandro Forero Cuervo <alejo@bachue.com>
-Source: http://web.archive.org/web/20071226080243/http://bachue.com/matanza/
+Source: https://web.archive.org/web/20071226080243/http://bachue.com/matanza/
 
 Files: *
 Copyright: 1999, 2000  Alejandro Forero Cuervo
@@ -35,7 +35,7 @@ Copyright: 2004, 2005  Polkan Alexis Garcia Rodriguez <pagarcia@slcolombia.org>
            2010, 2011  Peter Pentchev <roam@ringlet.net>
            2012  Bart Martens <bartm@debian.org>
            2012  Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
-           2012  Boris Pek <tehnick-8@mail.ru>
+           2012, 2018  Boris Pek <tehnick-8@yandex.ru>
            2013  Markus Koschany <apo@gambaru.de>
 License: GPL-2+
 
