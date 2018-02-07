@@ -81,7 +81,7 @@ matanza (0.13-3.4) unstable; urgency=low
 matanza (0.13-3.3) unstable; urgency=high
 
   * NMU.
-  * Remove i386 .o files (shipped in orig.tar.gz) in clean target. 
+  * Remove i386 .o files (shipped in orig.tar.gz) in clean target.
     closes: #384566.
 
  -- Clint Adams <schizo@debian.org>  Thu, 14 Sep 2006 23:23:47 -0400
@@ -113,7 +113,7 @@ matanza (0.13-3.1) unstable; urgency=low
 
 matanza (0.13-3) unstable; urgency=low
 
-  * Add more telnet clients as recommended packages. 
+  * Add more telnet clients as recommended packages.
 
  -- Polkan Alexis Garcia Rodriguez <pagarcia@slcolombia.org>  Tue, 15 Mar 2005 12:27:14 -0500
 
