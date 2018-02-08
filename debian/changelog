@@ -1,3 +1,21 @@
+matanza (0.13+ds1-6) unstable; urgency=medium
+
+  * Team upload.
+  * Bump Standards-Version to 4.1.3 (was 3.9.4).
+  * Update debian/control:
+    - update using wrap-and-sort tool
+    - update Homepage URL (http --> https)
+    - update Vcs-* fields: moved from Alioth to Salsa
+    - delete dpkg-dev from build dependencies
+    - fix spelling error in package description
+    - change package Priority from extra to optional
+  * Fix spelling error in manpage.
+  * Update years and Format URL in debian/copyright.
+  * Delete trailing whitespaces in debian/changelog.
+  * Delete menu file.
+
+ -- Boris Pek <tehnick@debian.org>  Thu, 08 Feb 2018 17:52:15 +0300
+
 matanza (0.13+ds1-5) unstable; urgency=low
 
   * Team upload.
