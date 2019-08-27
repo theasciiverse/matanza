@@ -1,3 +1,20 @@
+matanza (0.13+ds2-1) unstable; urgency=medium
+
+  * Team upload.
+  * Repack tarball with sources for deleting of extra debian/ directory.
+  * Bump Standards-Version to 4.4.0 (was 4.1.3).
+  * Fix cross build from sources. (Closes: #929441)
+    [Thanks to Helmut Grohne]
+  * Cosmetic changes in debian/rules.
+  * Cosmetic changes in debian/copyright.
+  * Delete debian/source/options: fixes lintian warnings:
+    debian-source-options-has-custom-compression-settings.
+  * Add Files-Excluded and Comment fields to debian/copyright:
+    fixes lintian notes: missing-explanation-for-repacked-upstream-tarball.
+  * Fix lintian notes: file-contains-trailing-whitespace.
+
+ -- Boris Pek <tehnick@debian.org>  Wed, 28 Aug 2019 00:09:15 +0300
+
 matanza (0.13+ds1-6) unstable; urgency=medium
 
   * Team upload.
