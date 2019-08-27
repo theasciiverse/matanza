@@ -2,6 +2,9 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: matanza
 Upstream-Contact: Alejandro Forero Cuervo <alejo@bachue.com>
 Source: https://web.archive.org/web/20071226080243/http://bachue.com/matanza/
+Files-Excluded: ai.c matanza.c
+Comment: delete automatically generated files to ensure that everything is
+ built from sources.
 
 Files: *
 Copyright: 1999-2000  Alejandro Forero Cuervo
