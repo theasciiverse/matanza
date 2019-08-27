@@ -4,25 +4,17 @@ Upstream-Contact: Alejandro Forero Cuervo <alejo@bachue.com>
 Source: https://web.archive.org/web/20071226080243/http://bachue.com/matanza/
 
 Files: *
-Copyright: 1999, 2000  Alejandro Forero Cuervo
+Copyright: 1999-2000  Alejandro Forero Cuervo
 License: GPL-2+
 
 Files: ascii.h asciitab.h iasciitab.h latin1tab.h utf8tab.h
        xmldef.h xmlparse.c xmlparse.h xmlrole.c xmlrole.h
        xmltok.c xmltok.h xmltok_impl.c xmltok_impl.h
-Copyright: 1998, 1999, 2000  Thai Open Source Software Center Ltd
+Copyright: 1998-2000  Thai Open Source Software Center Ltd
 License: GPL-2+
 
-Files: getopt1.c
-Copyright: 1987,88,89,90,91,92,93,94,96,97,98  Free Software Foundation, Inc.
-License: GPL-2+
-
-Files: getopt.c
-Copyright: 1987, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98  Free Software Foundation, Inc.
-License: GPL-2+
-
-Files: getopt.h
-Copyright: 1989,90,91,92,93,94,96,97  Free Software Foundation, Inc.
+Files: getopt1.c getopt.*
+Copyright: 1987-1998  Free Software Foundation, Inc.
 License: GPL-2+
 
 Files: debian/*
@@ -35,7 +27,7 @@ Copyright: 2004, 2005  Polkan Alexis Garcia Rodriguez <pagarcia@slcolombia.org>
            2010, 2011  Peter Pentchev <roam@ringlet.net>
            2012  Bart Martens <bartm@debian.org>
            2012  Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
-           2012, 2018  Boris Pek <tehnick-8@yandex.ru>
+           2012, 2018, 2019  Boris Pek <tehnick-8@yandex.ru>
            2013  Markus Koschany <apo@gambaru.de>
 License: GPL-2+
 
