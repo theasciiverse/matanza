@@ -3,12 +3,14 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-CFLAGS:=	$(shell dpkg-buildflags --get CFLAGS)
-CPPFLAGS:=	$(shell dpkg-buildflags --get CPPFLAGS)
-LDFLAGS:=	$(shell dpkg-buildflags --get LDFLAGS)
+-include /usr/share/dpkg/buildtools.mk
+
+CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
+CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
 
 CFLAGS += -Wall
-export CFLAGS CPPFLAGS LDFLAGS
+export CC CFLAGS CPPFLAGS LDFLAGS
 
 # Note: this could be simplified even further using --with autotools_dev,
 # but it would require another repacking to bring back config.{guess,sub} :)
