@@ -1,8 +1,5 @@
 #!/usr/bin/make -f
 
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
-
 -include /usr/share/dpkg/buildtools.mk
 
 CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
@@ -11,6 +8,9 @@ LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
 
 CFLAGS += -Wall
 export CC CFLAGS CPPFLAGS LDFLAGS
+
+%:
+	dh $@
 
 # Note: this could be simplified even further using --with autotools_dev,
 # but it would require another repacking to bring back config.{guess,sub} :)
@@ -22,6 +22,3 @@ override_dh_auto_configure:
 
 override_dh_auto_build:
 	dh_auto_build -- CFLAGS="$(CFLAGS)"
-
-%:
-	dh $@
