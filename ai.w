@@ -874,7 +874,7 @@ addresses for the server specified.
     }
 
   /* Connect to the server. */
-  while (connect(fd, &addr, sizeof(struct sockaddr_in)) == -1)
+  while (connect(fd, (struct sockaddr*) &addr, sizeof(struct sockaddr_in)) == -1)
     if (errno != EINTR)
       {
         if (!host || !host->h_addr_list[++i])
