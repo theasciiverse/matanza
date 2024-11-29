@@ -1,3 +1,14 @@
+matanza (0.13+ds2-2) unstable; urgency=medium
+
+  * Team upload.
+  * Set Rules-Requires-Root: no
+  * Change telnet recommendation (Closes: #1016860)
+
+  [ Patrice Duroux ]
+  * Fix FTBFS with GCC 14 (Closes: #1075255)
+
+ -- Alexandre Detiste <tchet@debian.org>  Fri, 29 Nov 2024 18:31:11 +0100
+
 matanza (0.13+ds2-1) unstable; urgency=medium
 
   * Team upload.
