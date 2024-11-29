@@ -3,3 +3,4 @@
 03-cppcheck.patch
 04-format.patch
 05-fix-build-with-libpng1.5.patch
+06-gcc14.patch

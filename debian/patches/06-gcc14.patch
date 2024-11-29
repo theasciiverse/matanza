@@ -1,0 +1,22 @@
+--- a/configure
++++ b/configure
+@@ -916,7 +916,7 @@
+ #line 917 "configure"
+ #include "confdefs.h"
+ 
+-main(){return(0);}
++int main(){return(0);}
+ EOF
+ if { (eval echo configure:922: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   ac_cv_prog_cc_works=yes
+--- a/ai.w
++++ b/ai.w
+@@ -874,7 +874,7 @@
+     }
+ 
+   /* Connect to the server. */
+-  while (connect(fd, &addr, sizeof(struct sockaddr_in)) == -1)
++  while (connect(fd, (struct sockaddr*) &addr, sizeof(struct sockaddr_in)) == -1)
+     if (errno != EINTR)
+       {
+         if (!host || !host->h_addr_list[++i])
