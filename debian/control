@@ -16,7 +16,7 @@ Vcs-Browser: https://salsa.debian.org/games-team/matanza
 Package: matanza
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Recommends: telnet | telnet-ssl | inetutils-telnet | putty | telnet-client
+Recommends: telnet | telnet-client | putty
 Description: Space ascii war game
  Matanza is a multiplayer game.  In it, every player controls a ship cruising
  in space, aiming to destroy the other players (and, eventually, ships
