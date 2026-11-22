@@ -1,3 +1,15 @@
+matanza (0.13+ds2-3) unstable; urgency=medium
+
+  * Team upload.
+  * Recommends 'inetutils-telnet' instead of transitional 'telnet'
+    (Closes: #1154836)
+  * Drop "Rules-Requires-Root: no": it is the default now
+  * Add debian/salsa-ci.yml
+  * Nump Standards-Version to 4.7.4, drop Priority: tag
+  * Set debhelper-compat version in Build-Depends.
+
+ -- Alexandre Detiste <tchet@debian.org>  Sun, 22 Nov 2026 16:24:21 +0100
+
 matanza (0.13+ds2-2) unstable; urgency=medium
 
   * Team upload.
