@@ -1,0 +1,10 @@
+include:
+  - https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/recipes/debian.yml
+
+variables:
+  # this does nothing
+  SALSA_CI_DISABLE_BUILD_PACKAGE_ALL: 1
+  # this does the same as the amd64 build
+  SALSA_CI_DISABLE_BUILD_PACKAGE_ANY: 1
+  # like most graphical games there is no autopkgtests
+  SALSA_CI_DISABLE_AUTOPKGTEST: 1
