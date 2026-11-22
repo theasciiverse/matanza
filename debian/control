@@ -1,6 +1,5 @@
 Source: matanza
 Section: games
-Priority: optional
 Maintainer: Debian Games Team <pkg-games-devel@lists.alioth.debian.org>
 Uploaders:
  Peter Pentchev <roam@ringlet.net>,
@@ -9,7 +8,7 @@ Build-Depends:
  autotools-dev,
  libpng-dev,
  texlive-extra-utils,
-Standards-Version: 4.4.0
+Standards-Version: 4.7.4
 Homepage: https://web.archive.org/web/20071226080243/http://bachue.com/matanza/
 Vcs-Git: https://salsa.debian.org/games-team/matanza.git
 Vcs-Browser: https://salsa.debian.org/games-team/matanza
