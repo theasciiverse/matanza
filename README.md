@@ -49,7 +49,7 @@ letters (one is offered) and press Enter again.
 | `c`, `C`, `s`, `v` | drop a message, clear them, move them, hide them |
 | `p` | pause the universe (for everyone) |
 | Ctrl-L | draw the screen again |
-| `q` | quit |
+| `q` | quit (`y` to confirm); `Q` quits at once |
 
 Every ship has five lives. Lose them and you are sent out of the game.
 

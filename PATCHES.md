@@ -101,6 +101,10 @@ unchanged.
   before the telnet negotiation finished had animation data freed that was
   never set; connections now start zeroed.
   Connection buffers were leaked when a connection was removed.
+- **One Enter on the name.** With no password and no teams (always the
+  case here), Enter on the name moved the focus to an unseen fourth field
+  and the game only started on a second Enter, so the screen looked stuck.
+  Enter on the name now starts the game; an empty name is still refused.
 - **Builds with today's compilers and C libraries.** `time.h` for `time()`,
   `string.h` in the bundled getopt (musl and macOS use it), and
   `-std=gnu99` for the 2000-era declarations.

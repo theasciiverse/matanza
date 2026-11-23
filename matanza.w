@@ -5629,7 +5629,11 @@ mat_mainmenu_key ( MatConnection *con, int input )
       switch (input)
         {
         case 13:
-          if (menu->focus == 3)
+          /* With no password or team to fill in, Enter on the name starts
+             the game: the focus used to move on to an unseen fourth field
+             and wait for a second Enter. */
+          if (menu->focus == 3
+              || (menu->focus == 0 && !arg_password && !arg_teams_count))
             {
               if (strlen(menu->buffer[0]) == 0)
                 {
