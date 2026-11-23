@@ -2189,7 +2189,7 @@ We send the default options we want and set the key handler.
     "Argos", "Galactus", "Javo", "Vulpex", "MrPong", "JoeCool", "Morgon",
     "Magneto", "Polux", "Magician", "Vader", "Draco", "Dragon", "Demon", "DJ",
     "Mystery", "Killer", "Slayer", "Vampire", "Paco", "Gato", "Midnight",
-    "Spock", "Kirk", "Bastard", "Reindeer", "Hitler", "Stalin", "Lenin",
+    "Spock", "Kirk", "Nova", "Reindeer", "Comet", "Quasar", "Lenin",
     "Guevara", "Fidel", "Khan", "Napoleon", "Ulises", "Futura", "Tux",
     "Mozilla", "Duke", "Bowie", "SpaceBoy", "Gorilla", "Godzilla", "Chuk",
     "Mercury", "Silver", "Blake", "Stallman", "Raymond", "Torvalds", "Wall",
@@ -2200,7 +2200,7 @@ We send the default options we want and set the key handler.
     "Derek", "Eric", "Richard", "ESR", "RMS", "Master", "Bill", "Steve",
     "Hax0r", "Lamer", "Cracker", "Dood", "Kiddo", "Waine", "Kent", "Wright",
     "Stephen", "Fred", "Tintin", "Haddock", "Milu", "Shiva", "Apollo", "Mars",
-    "Jupiter", "Butthead", "Beavis", "ElCHAVO", "Laid", "Rex", "Riff",
+    "Jupiter", "Pulsar", "Orion", "ElCHAVO", "Vega", "Rex", "Riff",
     "Hunter", "Elvis", "Hendrix", "MajorTom", "Moe", "Musician", "Cat",
     "Vladimir", "Tricky", "Darwin", "Freud", "Einstein", "Newton", "Hitman",
     "Tato", "Pigidik", "NOD"
@@ -7878,7 +7878,7 @@ ship_key_quit_cancel ( MatConnection *con )
       "-=> Ooooer, stay stay stay! :)",
       "-=> I knew you weren't such a chicken!",
       "-=> Phew, you scared me.",
-      "-=> Good.  Now kill them all, you bastard!"
+      "-=> Good.  Now go blast them all, hotshot!"
     };
 
   ASSERT(con->ship_count > 0);
