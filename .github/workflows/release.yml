@@ -1,0 +1,95 @@
+# Asciiverse release workflow (our tags, *-av.*, or run by hand with a tag)
+# Builds Matanza for the Asciiverse catalog: one archive per target, named
+# matanza-<target>.tar.gz, plus a SHA256SUMS file, attached to a GitHub
+# release (hub/catalog/SCHEMA.md, release.source = "github").
+#
+# Each archive holds the launcher (matanza, Rust: menu, SSH host and client)
+# and the game server beside it (matanza-server, C, tangled from matanza.w
+# with ctangle). Linux builds are static (musl). There is no Windows build:
+# the server only listens on a Unix domain socket and the launcher's
+# terminal handling is Unix only.
+
+name: release
+
+on:
+  push:
+    tags: ["*-av.*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "existing tag to build and release"
+        required: true
+
+env:
+  TAG: ${{ inputs.tag || github.ref_name }}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { target: x86_64-unknown-linux-musl, os: ubuntu-24.04 }
+          - { target: aarch64-unknown-linux-musl, os: ubuntu-24.04-arm }
+          - { target: x86_64-apple-darwin, os: macos-13 }
+          - { target: aarch64-apple-darwin, os: macos-14 }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
+
+      - name: Tools (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y musl-tools texlive-binaries
+          rustup target add ${{ matrix.target }}
+
+      - name: Tools (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew install cweb
+          rustup target add ${{ matrix.target }}
+
+      - name: Build
+        run: |
+          if [ "$RUNNER_OS" = Linux ]; then
+            export CC=musl-gcc LDFLAGS=-static
+            # ring's C code for the musl target
+            export CC_x86_64_unknown_linux_musl=musl-gcc CC_aarch64_unknown_linux_musl=musl-gcc
+          fi
+          PLATFORM=${{ matrix.target }} CARGO_TARGET=${{ matrix.target }} sh asciiverse/build.sh
+
+      - name: Package
+        run: sh asciiverse/package.sh ${{ matrix.target }} build/${{ matrix.target }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target }}
+          path: dist/*
+
+  release:
+    needs: build
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Checksums
+        working-directory: dist
+        run: sha256sum * > SHA256SUMS && cat SHA256SUMS
+
+      - name: Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 \
+            || gh release create "$TAG" -R "$GITHUB_REPOSITORY" --title "Matanza $TAG" \
+                 --notes "Matanza ${TAG%%-av.*} by Alejandro Forero Cuervo, with Debian's patches and the changes in PATCHES.md, built for the Asciiverse catalog: computer ships, and play over SSH on the local network."
+          gh release upload "$TAG" dist/* -R "$GITHUB_REPOSITORY" --clobber
