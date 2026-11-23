@@ -9471,10 +9471,22 @@ should move to reach him.
 @d MAT_GRAPH_CORD(p,s,x,y)
   ((int)(((x) + 2 * (s)->win_x_s) + ((y) + 2 * (s)->win_y_s) * (p)->graph_imgwidth))
 
+@d MAT_GRAPH_INSIDE(p,i)
+  ((i) >= 0 && (i) < (p)->graph_imgwidth * (p)->graph_imgheight)
+
 @d MAT_GRAPH_DRAW(p,s,x,y,b)
-  ((p)->graph_imagebuffer[MAT_GRAPH_CORD(p,s,x,y)] = (b))
+{
+  int mat_graph_i = MAT_GRAPH_CORD(p,s,x,y);
+
+  /* Asciiverse: a point outside the player's screen is not drawn (bullets
+   * seen through another ship, whose window may be bigger, landed past the
+   * end of the buffer). */
+  if (MAT_GRAPH_INSIDE(p, mat_graph_i))
+    (p)->graph_imagebuffer[mat_graph_i] = (b);
+}
 
 @d MAT_GRAPH_DRAW_ALPHA(p,s,x,y,b,a)
+if (MAT_GRAPH_INSIDE(p, MAT_GRAPH_CORD(p, s, x, y)))
 {
   unsigned char *xcol = &(p)->graph_imagebuffer[MAT_GRAPH_CORD(p, s, x, y)];
 
