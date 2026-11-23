@@ -3466,11 +3466,20 @@ void mat_print (MatConnection *p, int x, int y, int attr, char *s, int bl)
   ASSERT(x < p->xwinsize);
   ASSERT(y < p->ywinsize);
 
+  /* Asciiverse: text that would fall outside the window is left out. */
+  if (y < 0 || y >= p->ywinsize || !p->graph_textbuffer)
+    return;
+
   x1 = x;
   y1 = y;
   for (pos = 0; s[pos] != 0 && pos < 10000; pos++)
     {
       s1[pos] = s[pos];
+      if (x1 < 0)
+        {
+          x1++;
+          continue;
+        }
       pos1 = x1 + y1 * p->xwinsize;
       ASSERT(x1 < p->xwinsize);
       ASSERT(y1 < p->ywinsize);
@@ -3744,16 +3753,27 @@ void        mat_graph_render            ( MatConnection  *con,
 }
 
 @
+@d MAT_WINDOW_MIN_X  80
+@d MAT_WINDOW_MIN_Y  24
+@d MAT_WINDOW_MAX_X 400
+@d MAT_WINDOW_MAX_Y 200
+
 @<AALib: Function to resize context of a player@>=
 void
 mat_graph_resize ( MatConnection *con, int width, int height )
 {
   int c;
 
-  if (height <= 0)
-    height = 24;
-  if (width <= 0)
-    width = 80;
+  /* Asciiverse: the screens are laid out for 80x24 at least, and a window
+   * size is whatever the other end says, so keep it to what can be drawn. */
+  if (height < MAT_WINDOW_MIN_Y)
+    height = MAT_WINDOW_MIN_Y;
+  if (width < MAT_WINDOW_MIN_X)
+    width = MAT_WINDOW_MIN_X;
+  if (height > MAT_WINDOW_MAX_Y)
+    height = MAT_WINDOW_MAX_Y;
+  if (width > MAT_WINDOW_MAX_X)
+    width = MAT_WINDOW_MAX_X;
 
   ASSERT(width  > 0);
   ASSERT(height > 0);
@@ -6062,7 +6082,9 @@ After this is done, we remove the bytes from the buffer.
 @d KEY_ARROW_LEFT  -13
 
 @d GOT_INPUT(con, c)
-  if (con->key_handler)
+  if ((c) == 12 && con->state != MAT_STATE_MACHINE)
+    con->info.t.clean = 0;
+  else if (con->key_handler)
     con->key_handler(con, c);
 
 @<Process and discard data for player |con|@>=
