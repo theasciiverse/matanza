@@ -2034,7 +2034,7 @@ client) or a machine (speaking MMP).
   MatConnection *con;
   int            on = 1;
 
-  con = malloc(sizeof(MatConnection));
+  con = calloc(1, sizeof(MatConnection));
   if (!con)
     {
       /* TODO: Kill this connection rather than the whole program. */
@@ -2309,6 +2309,7 @@ mat_name_pick ( void )
 
   con->key_handler = NULL;
   con->anim_func   = NULL;
+  con->anim_data   = NULL;
 
   con->input_state = MAT_KEY_DATA;
 
@@ -2373,6 +2374,7 @@ mat_animation_cancel (MatConnection *con, int x)
     {
     case 13:
       free(con->anim_data);
+      con->anim_data = NULL;
       MAT_DEFAULT_PALETTE(con);
       main_menu_begin(con);
       break;
@@ -5328,6 +5330,7 @@ mat_anim_001 ( MatConnection *con )
         {
           free(con->anim_data);
           @<Animation 002: Play@>;
+          return;
         }
 
       DATA001(delay)++;
