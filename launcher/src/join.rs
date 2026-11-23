@@ -101,11 +101,13 @@ pub async fn join(state: &std::path::Path, address: &str) -> Result<()> {
     let _screen = RawScreen::enter()?;
     let keys = Keys::new()?;
     let mut winch = signal(SignalKind::window_change())?;
+    let mut hangup = signal(SignalKind::hangup())?;
+    let mut term = signal(SignalKind::terminate())?;
     let mut kbuf = [0u8; 256];
     loop {
         tokio::select! {
             r = keys.read(&mut kbuf) => {
-                let n = r?;
+                let n = r.unwrap_or(0);
                 if n == 0 { break; }
                 log::debug!("keys {:?}", &kbuf[..n]);
                 channel.data(&kbuf[..n]).await?;
@@ -116,6 +118,8 @@ pub async fn join(state: &std::path::Path, address: &str) -> Result<()> {
                 Some(ChannelMsg::ExitStatus { .. }) => {}
                 _ => {}
             },
+            _ = hangup.recv() => break,
+            _ = term.recv() => break,
             _ = winch.recv() => {
                 let (c, r) = term::size();
                 log::debug!("window {}x{}", c, r);

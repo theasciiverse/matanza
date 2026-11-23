@@ -15,6 +15,8 @@ pub async fn play(socket: &Path) -> Result<()> {
     let _screen = RawScreen::enter()?;
     let keys = Keys::new()?;
     let mut winch = signal(SignalKind::window_change())?;
+    let mut hangup = signal(SignalKind::hangup())?;
+    let mut term = signal(SignalKind::terminate())?;
 
     let (cols, rows) = term::size();
     let mut tn = Telnet::new(cols, rows);
@@ -25,7 +27,7 @@ pub async fn play(socket: &Path) -> Result<()> {
     loop {
         tokio::select! {
             r = keys.read(&mut kbuf) => {
-                let n = r?;
+                let n = r.unwrap_or(0);
                 if n == 0 { break; }
                 log::debug!("keys {:?}", &kbuf[..n]);
                 let mut out = Vec::with_capacity(n + 4);
@@ -40,6 +42,8 @@ pub async fn play(socket: &Path) -> Result<()> {
                 if !reply.is_empty() && to_game.write_all(&reply).await.is_err() { break; }
                 if !screen.is_empty() { term::show(&screen)?; }
             }
+            _ = hangup.recv() => break,
+            _ = term.recv() => break,
             _ = winch.recv() => {
                 let (cols, rows) = term::size();
                 log::info!("window {}x{}", cols, rows);
