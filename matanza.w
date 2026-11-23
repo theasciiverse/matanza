@@ -183,6 +183,14 @@ struct MatConnection
 
   void               (*key_handler) (MatConnection *, int);
 
+  /* Asciiverse: computer pilots.  |pilot| is nonzero for a connection with no
+   * socket whose one ship is flown by |mat_pilot_think|. */
+  int                  pilot;
+  int                  pilot_aim;
+  int                  pilot_skill;
+  int                  pilot_clock;
+  int                  pilot_over;
+
   MatConnection       *next;
   MatConnection       *prev;
 };
@@ -726,6 +734,8 @@ int               arg_health               = 1000;
 
 char             *arg_socket               = NULL;
 
+int               arg_computer_ships       = 0;
+
 int               arg_mapsize_x            = 2000;
 int               arg_mapsize_y            = 1600;
 
@@ -809,6 +819,7 @@ main (int argc, char **argv)
 
         @<Accept incoming connections@>;
         @<Process input from players@>;
+        mat_pilots_update();
         @<Update all universes@>;
         @<Send output to players@>;
 
@@ -1910,7 +1921,8 @@ nice. Or at least have him fade into nothingness.
       }
     else
       {
-        mat_input(con);
+        if (!con->pilot)
+          mat_input(con);
         con = con->next;
       }
 }
@@ -2024,6 +2036,7 @@ client) or a machine (speaking MMP).
     }
 
   con->fd = result;
+  con->pilot = 0;
 
   @<Get IP address for |in_con|@>;
 
@@ -2181,6 +2194,23 @@ We send the default options we want and set the key handler.
 
 @<Select a random name@>=
 {
+  const char *pick = mat_name_pick();
+
+  menu->buflen[0] = strlen(pick);
+  strncpy(menu->buffer[0], pick, menu->buflen[0] + 1);
+}
+
+@ Asciiverse: the list of names moved into a function so the computer pilots
+can draw their names from it too.
+
+@<Function prototypes@>=
+const char *mat_name_pick ( void );
+
+@
+@<Functions@>=
+const char *
+mat_name_pick ( void )
+{
   static char *name[] =
   {
     "Joe", "CmdrTaco", "Rob", "Pong", "Hob", "John", "Pepe", "Moe", "Bart",
@@ -2206,12 +2236,7 @@ We send the default options we want and set the key handler.
     "Tato", "Pigidik", "NOD"
   };
 
-  int ch;
-
-  ch = rand() % (sizeof(name) / sizeof(char *));
-
-  menu->buflen[0] = strlen(name[ch]);
-  strncpy(menu->buffer[0], name[ch], menu->buflen[0] + 1);
+  return name[rand() % (sizeof(name) / sizeof(char *))];
 }
 
 @ Here we set information about the machine connection.
@@ -2739,6 +2764,7 @@ term_handler (int sig)
         { "bg-highcol",         required_argument, NULL, 21  },
         { "space",              no_argument,       NULL, 22  },
         { "socket",             required_argument, NULL, 23  },
+        { "computer-ships",     required_argument, NULL, 30  },
         { "usleep",             required_argument, NULL, 24  },
         { "ship-img",           required_argument, NULL, 27  },
         { "free-at-exit",       no_argument,       NULL, 28  },
@@ -2857,6 +2883,13 @@ term_handler (int sig)
         case 23:
           arg_socket = optarg;
           break;
+        case 30:
+          arg_computer_ships = atoi(optarg);
+          if (arg_computer_ships < 0)
+            arg_computer_ships = 0;
+          if (arg_computer_ships > MAT_PILOTS_MAX)
+            arg_computer_ships = MAT_PILOTS_MAX;
+          break;
         case 24:
           arg_usleep = atol(optarg);
           break;
@@ -2919,6 +2952,7 @@ term_handler (int sig)
              "  --bg-highcol=NUM            Adjust the colors in the background\n"
              "  --space                     Ships' speed doesn't depend on their angle\n"
              "  --socket=PATH               Listen for players on the Unix socket PATH\n"
+             "  --computer-ships=NUM        Fly NUM computer ships, one fewer for each extra player\n"
              "  --usleep=NUM                Sleep NUM microseconds between updates\n"
              "  --ship-img=PATH             Load image of the ship from PATH\n"
              "\n"
@@ -10746,6 +10780,13 @@ mat_out_flush ( MatConnection *con )
 
   ASSERT(con->out_buf);
 
+  /* A computer pilot has no socket: what would be sent to it goes nowhere. */
+  if (con->pilot)
+    {
+      con->out_len = 0;
+      return 1;
+    }
+
 #ifdef MSG_NOSIGNAL
 #  define MAT_SEND_FLAGS MSG_NOSIGNAL
 #else
@@ -11709,6 +11750,331 @@ mat_image_optimize ( MatImage *img )
       img[ang].h = yend - ybeg;
       img[ang].w = xend - xbeg;
     }
+}
+
+@* Computer pilots.
+
+Asciiverse: Matanza was always meant to have ships flown by the computer.  The
+Matanza Machine Protocol was designed so that an artificial intelligence could
+run outside the server, and |matanza-ai| was its start, but it only ever adds
+one ship that never moves: the protocol has no way yet to steer a ship.  So
+the pilots live here, in the server, where they see the universe as it is.
+
+A pilot is a connection with no socket, in the machine state, with one ship.
+With |--computer-ships=NUM|, a universe with one person playing in it has
+|NUM| pilots; every further person who joins takes the place of one of them,
+and when the last person leaves, the pilots leave too.  A pilot sent out of
+the game makes way for a fresh one a few seconds later.
+
+@d MAT_PILOTS_MAX 12
+
+@<Function prototypes@>=
+void mat_pilots_update ( void );
+void mat_pilot_new     ( MatUniverse *un );
+void mat_pilot_think   ( MatConnection *con );
+
+@ Once per turn, count the people playing and the pilots, and bring pilots
+in or send them off.
+
+@<Functions@>=
+void
+mat_pilots_update ( void )
+{
+  MatConnection *c;
+  MatUniverse   *un = NULL;
+  int            humans = 0, pilots = 0, want;
+
+  for (c = connections; c; c = c->next)
+    {
+      if (c->state == MAT_STATE_REMOVE)
+        continue;
+
+      if (c->pilot)
+        {
+          if (c->ship_list && c->ship_list->info.player.game_over
+              && ++ c->pilot_over > 30)
+            {
+              message_broadcast(c->ship_list->un, "-=> %s jumps out of the fight.",
+                                c->ship_list->info.player.name);
+              mat_connection_free(c, MMP_SERVER_CLOSE_CLIENT, "");
+            }
+          else
+            pilots ++;
+        }
+      else if (c->state == MAT_STATE_PLAYING && c->ship_list)
+        {
+          humans ++;
+          if (!un)
+            un = c->ship_list->un;
+        }
+    }
+
+  want = humans == 0 ? 0 : arg_computer_ships - (humans - 1);
+  if (want < 0)
+    want = 0;
+
+  for (c = connections; c && pilots > want; c = c->next)
+    if (c->pilot && c->state != MAT_STATE_REMOVE)
+      {
+        if (c->ship_list && humans > 0)
+          message_broadcast(c->ship_list->un, "-=> %s makes way and jumps out.",
+                            c->ship_list->info.player.name);
+        mat_connection_free(c, MMP_SERVER_CLOSE_CLIENT, "");
+        pilots --;
+      }
+
+  while (un && pilots < want)
+    {
+      mat_pilot_new(un);
+      pilots ++;
+    }
+}
+
+@ A new pilot gets a name nobody in the universe has, and a ship made the way
+the machines' ships are made.
+
+@<Functions@>=
+void
+mat_pilot_new ( MatUniverse *un )
+{
+  MatConnection *con;
+  MatMovingObj  *s, *o;
+  const char    *name = NULL;
+  int            tries;
+
+  for (tries = 0; tries < 50; tries ++)
+    {
+      name = mat_name_pick();
+      for (o = un->players_head; o; o = o->nexttype)
+        if (!strcmp(o->info.player.name, name))
+          break;
+      if (!o)
+        break;
+    }
+
+  con = calloc(1, sizeof(MatConnection));
+  s   = calloc(1, sizeof(MatMovingObj));
+  if (!con || !s)
+    {
+      fprintf(stderr, "%s: %s\n", program_name, strerror(errno));
+      exit(EXIT_FAILURE);
+    }
+
+  con->fd          = SOCKET_ERROR;
+  con->addr        = strdup("computer");
+  if (!con->addr)
+    {
+      fprintf(stderr, "%s: %s\n", program_name, strerror(errno));
+      exit(EXIT_FAILURE);
+    }
+  con->state       = MAT_STATE_MACHINE;
+  con->key_handler = NULL;
+  con->anim_func   = mat_pilot_think;
+  con->input_state = MAT_KEY_DATA;
+  con->pilot       = 1;
+  con->pilot_skill = rand() % 3;
+  con->pilot_clock = rand() % 20;
+
+  @<Initialize the container of ships for |con|@>;
+  MAT_SUB_MACHINE_INIT(con);
+
+  con->next = connections;
+  con->prev = NULL;
+  if (connections)
+    connections->prev = con;
+  connections = con;
+  players_count ++;
+
+  s->type = MAT_MOVING_OBJ_SHIP;
+
+  @<Initialize the messages buffer for a new ship@>;
+  MAT_SHIP_VIEW_DEFAULT(s);
+
+  s->refs = 1;
+  s->img  = mat_ship;
+  s->draw = 1;
+  s->un   = un;
+
+  un->players_real ++;
+
+  ADD_MOVING_OBJ(s, un);
+
+  s->rm_next  = NULL;
+  s->prevtype = NULL;
+  s->nexttype = un->players_head;
+
+  if (un->players_head)
+    un->players_head->prevtype = s;
+  else
+    un->players_tail = s;
+
+  un->players_head = s;
+
+  strncpy(s->info.player.name, name, MAT_USER_MAX);
+  s->info.player.name[MAT_USER_MAX] = 0;
+
+  s->info.player.times_dead = 0;
+  s->info.player.game_over  = 0;
+
+  s->info.player.chat_buffer_len = 0;
+  s->info.player.chat_buffer[0]  = 0;
+
+  MAT_CONNECTION_SHIP_ADD(con, s);
+
+  MAT_SHIP_VIEW_CHECK(s->un);
+
+  start_game(s);
+
+  message_broadcast(un, "-=> %s (%s) joins the game", s->info.player.name, con->addr);
+}
+
+@ How a pilot flies.  Every turn it picks the nearest ship (people a little
+before other pilots) or, when one is about to hit it, an asteroid, and works
+the same keys a player has: it turns towards its mark, thrusts when the mark
+is far, brakes when it closes in too fast, and fires when its nose is on the
+mark.  Each pilot aims a little off, by an amount that changes now and then;
+how much depends on its skill.
+
+@d MAT_PILOT_DELTA(d, size)
+  if (!arg_limits)
+    {
+      if ((d) >  (size) / 2) (d) -= (size);
+      if ((d) < -(size) / 2) (d) += (size);
+    }
+
+@<Functions@>=
+void
+mat_pilot_think ( MatConnection *con )
+{
+  MatMovingObj *me, *o, *mark = NULL;
+  MatUniverse  *un;
+  double        mx, my, dx = 0, dy = 0, dist = 0, best = 1e9;
+  double        want_ang, diff, want_turn, closing;
+  int           mark_ship = 0;
+
+  me = con->ship_list;
+  if (!me || me->info.player.game_over)
+    return;
+
+  un = me->un;
+  if (un->pause)
+    return;
+
+  con->pilot_clock ++;
+  if (con->pilot_clock % 25 == 0)
+    con->pilot_aim = con->pilot_skill == 0 ? 0
+                   : rand() % (2 * con->pilot_skill + 1) - con->pilot_skill;
+
+  mx = me->pos_x + me->img->w / 2;
+  my = me->pos_y + me->img->h / 2;
+
+  for (o = un->players_head; o; o = o->nexttype)
+    {
+      double ox, oy, d;
+
+      if (o == me || o->info.player.game_over || !o->draw
+          || !o->info.player.visible)
+        continue;
+
+      ox = o->pos_x + o->img->w / 2 - mx;
+      oy = o->pos_y + o->img->h / 2 - my;
+      MAT_PILOT_DELTA(ox, un->mapsize_x);
+      MAT_PILOT_DELTA(oy, un->mapsize_y);
+
+      d = sqrt(ox * ox + oy * oy);
+      if (o->info.player.conn && !o->info.player.conn->pilot)
+        d *= 0.75;
+
+      if (d < best)
+        {
+          best = d;
+          mark = o;
+          dx = ox;
+          dy = oy;
+        }
+    }
+
+  mark_ship = mark != NULL;
+
+  for (o = un->ast; o; o = o->nexttype)
+    {
+      double ox, oy, d;
+
+      if (!o->draw || !o->img)
+        continue;
+
+      ox = o->pos_x + o->img->w / 2 - mx;
+      oy = o->pos_y + o->img->h / 2 - my;
+      MAT_PILOT_DELTA(ox, un->mapsize_x);
+      MAT_PILOT_DELTA(oy, un->mapsize_y);
+
+      d = sqrt(ox * ox + oy * oy);
+      if (d < 110 && (!mark || d < best * 0.6))
+        {
+          best = d;
+          mark = o;
+          dx = ox;
+          dy = oy;
+          mark_ship = 0;
+        }
+    }
+
+  if (!mark)
+    {
+      /* Nobody to fight: drift and look around. */
+      if (con->pilot_clock % 40 < 3)
+        ship_key_left(me);
+      return;
+    }
+
+  dist = sqrt(dx * dx + dy * dy);
+  if (dist < 1)
+    dist = 1;
+
+  /* The nose points along (-sin, -cos) of the ship's angle. */
+  want_ang = atan2(-dx, -dy) * arg_ang / (2.0 * PI);
+  diff = want_ang - me->ang + con->pilot_aim;
+  while (diff >  arg_ang / 2.0) diff -= arg_ang;
+  while (diff < -arg_ang / 2.0) diff += arg_ang;
+
+  /* Turn: aim for an angular speed that brings the nose round in a few
+   * turns, and press left or right until the ship turns that fast. */
+  if (arg_ang_speed_max > 0)
+    {
+      want_turn = diff / (2.0 * STEPS_MOVEMENT);
+      if (want_turn >  arg_ang_speed_max) want_turn =  arg_ang_speed_max;
+      if (want_turn < -arg_ang_speed_max) want_turn = -arg_ang_speed_max;
+
+      if (me->sp_ang < want_turn - 0.05)
+        ship_key_left(me);
+      else if (me->sp_ang > want_turn + 0.05)
+        ship_key_right(me);
+    }
+  else if (diff > 0.5)
+    ship_key_left(me);
+  else if (diff < -0.5)
+    ship_key_right(me);
+
+  /* How fast we are closing in, in dots per turn. */
+  closing = (me->sp_x * dx + me->sp_y * dy) / dist * STEPS_MOVEMENT;
+
+  if (mark_ship)
+    {
+      if (fabs(diff) < 4 && dist > 140 && closing < 5)
+        ship_key_up(me);
+      else if (dist < 120 && closing > 2.5)
+        ship_key_down(me);
+    }
+  else if (closing > 2 && fabs(diff) > 6)
+    ship_key_down(me);
+
+  /* Fire when the nose is on the mark. */
+  if (fabs(diff) <= 1.5 && dist < 190)
+    mat_bullet_new_player(me, 0, 1);
+  else if (mark_ship && fabs(diff) <= 1 && dist < 420 && rand() % 40 == 0)
+    mat_bullet_new_player(me, 1, 1);
+  else if (mark_ship && fabs(diff) <= 1 && dist > 300 && rand() % 400 == 0)
+    mat_bullet_new_player(me, 2, 1);
 }
 
 @* Aliens System
