@@ -724,8 +724,7 @@ int               arg_imgwidth             = MAT_IMGWIDTH_DEFAULT;
 
 int               arg_health               = 1000;
 
-int               arg_port                 = 7993;
-int               arg_port_machine         = 7793;
+char             *arg_socket               = NULL;
 
 int               arg_mapsize_x            = 2000;
 int               arg_mapsize_y            = 1600;
@@ -824,7 +823,6 @@ main (int argc, char **argv)
 {
   VERBOSE("-=> accept incomming connections\n");
   mat_accept(mat_mainsock,         0);
-  mat_accept(mat_mainsock_machine, 1);
   VERBOSE("<=- accept incomming connections\n");
 }
 
@@ -850,10 +848,9 @@ main (int argc, char **argv)
 
   FD_ZERO(&i);
   FD_SET(mat_mainsock,         &i);
-  FD_SET(mat_mainsock_machine, &i);
 
   VERBOSE("-=> select\n");
-  select(MAX(mat_mainsock, mat_mainsock_machine) + 1, &i, NULL, NULL, NULL);
+  select(mat_mainsock + 1, &i, NULL, NULL, NULL);
   VERBOSE("<=- select\n");
 }
 
@@ -1958,14 +1955,15 @@ void
 mat_accept ( MatSocketT source, int machine )
 {
   MatSocketT          result;
-  socklen_t           in_con_size = sizeof(struct sockaddr_in);
-  struct sockaddr_in  in_con;
+  socklen_t           in_con_size = sizeof(struct sockaddr_un);
+  struct sockaddr_un  in_con;
 
   while (1)
     {
       do
         {
           VERBOSE("-=> accept [fd:%d]\n", source);
+          in_con_size = sizeof(struct sockaddr_un);
           result = accept(source, (struct sockaddr*)&in_con, &in_con_size);
           VERBOSE("<=- accept [fd:%d] [result:%d]\n", source, result);
         }
@@ -2046,7 +2044,7 @@ client) or a machine (speaking MMP).
   con->out_len = 0;
   con->out_siz = 0;
 
-  ASSERT(source == mat_mainsock || source == mat_mainsock_machine);
+  ASSERT(source == mat_mainsock);
 
   if (arg_max_players == 0 || players_count < arg_max_players)
     {
@@ -2096,13 +2094,15 @@ players' structures.
 
 @<Get IP address for |in_con|@>=
 {
-#if HAVE_INET_NTOP
-  @<Get incoming address for |in_con| using |inet_ntop|@>;
-#elif HAVE_INET_NTOA
-  @<Get incoming address for |in_con| using |inet_ntoa|@>;
-#else
-  @<Report bogus IP address@>;
-#endif
+  /* Asciiverse: players arrive through a Unix domain socket in the state
+   * folder (the SSH front end or the local terminal), so there is no
+   * address to show. */
+  con->addr = strdup("");
+  if (!con->addr)
+    {
+      fprintf(stderr, "%s: %s\n", program_name, strerror(errno));
+      exit(EXIT_FAILURE);
+    }
 
   ASSERT(con->addr);
 
@@ -2386,16 +2386,14 @@ void mat_animation_cancel     ( MatConnection *p, int x );
   @<Initialize the sockets system@>;
   @<Display label@>;
 
-#if MATANZA_VERBOSE
-  if (!arg_verbose)
-#endif
-    @<Fork and exit@>;
+  /* Asciiverse: the launcher runs the server and stops it, so it stays in
+   * the foreground.  It listens only on a Unix domain socket in the state
+   * folder; there is no TCP listener for players or machines. */
+  mat_mainsock         = mat_listen(arg_socket);
+  mat_mainsock_machine = SOCKET_ERROR;
 
   /* TODO: Should we change this to _chdir on Windows? */
   chdir ("/");
-
-  mat_mainsock         = mat_listen(arg_port        );
-  mat_mainsock_machine = mat_listen(arg_port_machine);
 
 }
 
@@ -2403,7 +2401,8 @@ void mat_animation_cancel     ( MatConnection *p, int x );
 @<Display label@>=
 {
   printf("-=> Matanza has been successfully started.\n");
-  printf("-=> Connect to port %d to play.\n", arg_port);
+  printf("-=> Players connect through %s.\n", arg_socket);
+  fflush(stdout);
 }
 
 @
@@ -2628,6 +2627,9 @@ term_handler (int sig)
 
   printf("Terminating on signal %d\n", sig);
 
+  if (arg_socket)
+    unlink(arg_socket);
+
   for (c = connections; c; c = c->next)
     mat_connection_free(c, MMP_SERVER_CLOSE_SHUTDOWN, "The server is being shutdown.");
 
@@ -2736,9 +2738,8 @@ term_handler (int sig)
         { "no-compress",        no_argument,       NULL, 20  },
         { "bg-highcol",         required_argument, NULL, 21  },
         { "space",              no_argument,       NULL, 22  },
-        { "port",               required_argument, NULL, 23  },
+        { "socket",             required_argument, NULL, 23  },
         { "usleep",             required_argument, NULL, 24  },
-        { "port-machine",       required_argument, NULL, 25  },
         { "ship-img",           required_argument, NULL, 27  },
         { "free-at-exit",       no_argument,       NULL, 28  },
         { "verbose",            no_argument,       NULL, 29  },
@@ -2854,13 +2855,10 @@ term_handler (int sig)
           arg_space = 1;
           break;
         case 23:
-          arg_port = atoi(optarg);
+          arg_socket = optarg;
           break;
         case 24:
           arg_usleep = atol(optarg);
-          break;
-        case 25:
-          arg_port_machine = atoi(optarg);
           break;
         case 26:
           arg_bg_dots = 0;
@@ -2920,9 +2918,8 @@ term_handler (int sig)
              "  --no-compress               Don't perform bandwidth optimizations\n"
              "  --bg-highcol=NUM            Adjust the colors in the background\n"
              "  --space                     Ships' speed doesn't depend on their angle\n"
-             "  --port=NUM                  Use TCP port NUM for telnet\n"
+             "  --socket=PATH               Listen for players on the Unix socket PATH\n"
              "  --usleep=NUM                Sleep NUM microseconds between updates\n"
-             "  --port-machine=NUM          Use TCP port NUM for machines' friendly protocol\n"
              "  --ship-img=PATH             Load image of the ship from PATH\n"
              "\n"
              "Report bugs to <bachue@@bachue.com>\n", program_name);
@@ -3132,16 +3129,10 @@ term_handler (int sig)
       arg_ang = 1;
     }
 
-  if (arg_port < 1)
+  if (!arg_socket && !show_help && !show_version)
     {
-      fprintf(stderr, "%s: port < 1\n", program_name);
-      arg_port = 7993;
-    }
-
-  if (arg_port_machine < 1)
-    {
-      fprintf(stderr, "%s: port < 1\n", program_name);
-      arg_port_machine = 7993;
+      fprintf(stderr, "%s: --socket=PATH is required\n", program_name);
+      exit(EXIT_FAILURE);
     }
 
   if (arg_speed_max < 0)
@@ -3229,7 +3220,7 @@ them.
       ASSERT(sh->type == MAT_MOVING_OBJ_SHIP);
       pl = &sh->info.player;
 
-      if (showip)
+      if (showip && pl->conn && pl->conn->addr[0])
         message_broadcast(sh->un, "-=> %s <%s> %s.", pl->name, pl->conn->addr, reason);
       else
         message_broadcast(sh->un, "-=> %s %s.", pl->name, reason);
@@ -6678,6 +6669,9 @@ really is what we want.
 #if HAVE_SYS_SOCKET_H
 #include <sys/socket.h>
 #endif
+
+#include <sys/un.h>
+#include <sys/stat.h>
 
 #ifdef HAVE_ARPA_TELNET_H
 #include <arpa/telnet.h>
@@ -10532,30 +10526,31 @@ the appropriate code.
 
 @
 @<Function prototypes@>=
-MatSocketT mat_listen ( int port );
+MatSocketT mat_listen ( const char *path );
 
 @
 @<Functions@>=
 MatSocketT
-mat_listen ( int port )
+mat_listen ( const char *path )
 {
-  struct sockaddr_in in;
+  struct sockaddr_un in;
   MatSocketT result;
-  int on = 1;
+  mode_t old_umask;
 
-  VERBOSE("Listening on port %d...", port);
+  VERBOSE("Listening on %s...", path);
   fflush(stdout);
 
-  memset(&in, 0, sizeof(struct sockaddr_in));
-  in.sin_family = AF_INET;
-  in.sin_addr.s_addr = INADDR_ANY;
-  in.sin_port = htons(port);
+  if (strlen(path) >= sizeof(in.sun_path))
+    {
+      fprintf(stderr, "%s: %s: socket path too long\n", program_name, path);
+      exit(EXIT_FAILURE);
+    }
 
-#if HAVE_WSASOCKET
-  result = WSASocket(AF_INET, SOCK_STREAM, 0, NULL, 0, 0);
-#else
-  result = socket(AF_INET, SOCK_STREAM, 0);
-#endif
+  memset(&in, 0, sizeof(struct sockaddr_un));
+  in.sun_family = AF_UNIX;
+  strcpy(in.sun_path, path);
+
+  result = socket(AF_UNIX, SOCK_STREAM, 0);
 
   if (result == SOCKET_ERROR)
     {
@@ -10563,26 +10558,23 @@ mat_listen ( int port )
       exit(EXIT_FAILURE);
     }
 
-#if HAVE_SETSOCKOPT
-#  ifdef SOL_SOCKET
-#    ifdef SO_REUSEADDR
-  VERBOSE("setsockopt [fd:%d][option:SO_REUSEADDR]\n", result);
-  setsockopt(result, SOL_SOCKET, SO_REUSEADDR, (void *) &on, sizeof(on));
-#    endif
-#  endif
-#endif
+  /* A socket left behind by a server that did not stop cleanly. */
+  unlink(path);
 
-  if (bind(result, (struct sockaddr*)&in, sizeof(struct sockaddr_in)) == SOCKET_ERROR)
+  /* Only this user may connect. */
+  old_umask = umask(077);
+  if (bind(result, (struct sockaddr*)&in, sizeof(struct sockaddr_un)) == SOCKET_ERROR)
     {
-      fprintf(stderr, "%s: bind: %s\n", program_name, strerror(SOCKET_ERRNO()));
+      fprintf(stderr, "%s: bind: %s: %s\n", program_name, path, strerror(SOCKET_ERRNO()));
 
       exit(EXIT_FAILURE);
     }
+  umask(old_umask);
 
   if (listen(result, 10) == SOCKET_ERROR)
     {
-      exit(EXIT_FAILURE);
       fprintf(stderr, "%s: listen: %s\n", program_name, strerror(SOCKET_ERRNO()));
+      exit(EXIT_FAILURE);
     }
 
   /* Make socket nonblocking. */
