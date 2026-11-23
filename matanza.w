@@ -6759,6 +6759,8 @@ really is what we want.
 #include <sys/time.h>
 #endif
 
+#include <time.h>
+
 #if HAVE_SYS_TYPES_H
 #include <sys/types.h>
 #endif
