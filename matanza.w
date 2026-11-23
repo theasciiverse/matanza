@@ -115,6 +115,11 @@ struct MatConnection
   int                  out_len;
   int                  out_siz;
 
+  /* Asciiverse: bytes at the start of |out_buf| left over from a send that
+   * went out in part; they must still go, or the terminal would be left in
+   * the middle of an escape sequence. */
+  int                  out_keep;
+
   int                  state;
 
   MatMovingObj        *ship_hash[MAT_CONNECTION_SHIP_HASH_SIZE];
@@ -1900,6 +1905,8 @@ nice. Or at least have him fade into nothingness.
 
   players_count --;
 
+  free (con->out_buf);
+  free (con->buffer);
   free (con);
 }
 
@@ -2053,9 +2060,10 @@ client) or a machine (speaking MMP).
   /* Make socket nonblocking */
   NONBLOCKING_GENERIC(result);
 
-  con->out_buf = NULL;
-  con->out_len = 0;
-  con->out_siz = 0;
+  con->out_buf  = NULL;
+  con->out_len  = 0;
+  con->out_siz  = 0;
+  con->out_keep = 0;
 
   ASSERT(source == mat_mainsock);
 
@@ -3236,6 +3244,8 @@ them.
       memset(con->graph_attrbufferold, (char) MAT_NORMAL, con->xwinsize * con->ywinsize);
     }
   mat_flush(con, 0, 0, con->xwinsize, con->ywinsize);
+  if (con->state == MAT_STATE_REMOVE)
+    return;
 }
 
 @d MESSAGE_FROM(con, reason)
@@ -3267,6 +3277,11 @@ mat_flush ( MatConnection *con, int x, int y, int w, int h )
 {
   unsigned char *buf, *att;
   int   term_state;
+
+  /* Asciiverse: a connection that has just been dropped has nothing left to
+   * draw into. */
+  if (con->state == MAT_STATE_REMOVE)
+    return 0;
 
   term_state = MAT_NORMAL;
 
@@ -3746,6 +3761,12 @@ void        mat_graph_render            ( MatConnection  *con,
   free(con->graph_textbufferold);
   free(con->graph_attrbuffer);
   free(con->graph_attrbufferold);
+
+  con->graph_imagebuffer   = NULL;
+  con->graph_textbuffer    = NULL;
+  con->graph_textbufferold = NULL;
+  con->graph_attrbuffer    = NULL;
+  con->graph_attrbufferold = NULL;
 
   TERM_CLEAR_SCREEN(con);
   TERM_SHOW_CURSOR(con);
@@ -4829,7 +4850,7 @@ when |graph_bright|, |graph_inversion| or |graph_gamma| are modified.
 @ We use a very simple random numbers generator.
 
 @d MYLONG_MAX 0xffffffff
-@d MYRAND() (((state * 1103515245) + 12345) & MYLONG_MAX)
+@d MYRAND() ((int) (((unsigned int) state * 1103515245u + 12345u) & MYLONG_MAX))
 
 @<Apply randomization to points |i1|, |i2|, |i3| and |i4|@>=
   if (gamma)
@@ -6015,6 +6036,8 @@ mat_mainmenu_anim ( MatConnection *con )
             text[DATAMENU(text_cur)] + MAX(DATAMENU(text_pos) - con->xwinsize + 1, 0), 0);
 
   mat_flush(con, 0, con->ywinsize - 1, con->xwinsize, con->ywinsize);
+  if (con->state == MAT_STATE_REMOVE)
+    return;
 
   if (text[DATAMENU(text_cur)][MAX(DATAMENU(text_pos) - con->xwinsize, 0)] == 0)
     {
@@ -6053,8 +6076,14 @@ appropriate macro.
         con->key_handler(con, *(con->buffer + i));
       }
 
-  memmove(con->buffer, con->buffer + i, con->buflen - i);
-  con->buflen -= i;
+  /* Asciiverse: a key may have ended the connection and freed its buffer. */
+  if (con->state == MAT_STATE_REMOVE || !con->buffer || i > con->buflen)
+    con->buflen = 0;
+  else
+    {
+      memmove(con->buffer, con->buffer + i, con->buflen - i);
+      con->buflen -= i;
+    }
   con->bufprc = 0;
 }
 
@@ -6228,8 +6257,14 @@ After this is done, we remove the bytes from the buffer.
         }
     }
   
-  memmove(con->buffer, con->buffer + i, con->buflen - i);
-  con->buflen -= i;
+  /* Asciiverse: a key may have ended the connection and freed its buffer. */
+  if (con->state == MAT_STATE_REMOVE || !con->buffer || i > con->buflen)
+    con->buflen = 0;
+  else
+    {
+      memmove(con->buffer, con->buffer + i, con->buflen - i);
+      con->buflen -= i;
+    }
   con->bufprc = 0;
 }
 
@@ -6287,6 +6322,8 @@ mat_connection_free ( MatConnection *con, unsigned char reason, char *desc )
       @<AALib: Destroy the context of player |con|@>;
 
       free(con->buffer);
+      con->buffer = NULL;
+      con->bufsiz = con->buflen = 0;
 
       mat_printf(con,
                 "You have been disconnected from the server.\r\nReason: %s\r\n\r\n"
@@ -6309,6 +6346,10 @@ mat_connection_free ( MatConnection *con, unsigned char reason, char *desc )
   free(con->addr);
   free(con->out_buf);
   free(con->anim_data);
+  con->addr      = NULL;
+  con->out_buf   = NULL;
+  con->anim_data = NULL;
+  con->out_len   = con->out_siz = 0;
   SOCKET_CLOSE_GENERIC(con->fd);
 }
 
@@ -10860,7 +10901,9 @@ send_retry:
 #endif
         VERBOSE("send failed: player lagging\n");
         con->info.t.clean = 0;
-        break;
+        /* Asciiverse: drop this frame, but not what is left of an earlier one. */
+        con->out_len = con->out_keep;
+        return 1;
 
       default:
         fprintf(stderr, "%s: send: Unknown error (code %d)\n", program_name, SOCKET_ERRNO());
@@ -10869,7 +10912,22 @@ send_retry:
     }
 
   VERBOSE("send successful\n");
-  con->out_len = 0;
+
+  /* Asciiverse: a send that went out in part keeps the rest for next time and
+   * redraws the whole screen then, rather than cut the frame short.  A player
+   * who stops reading altogether is let go. */
+  if (retval < con->out_len)
+    {
+      memmove(con->out_buf, con->out_buf + retval, con->out_len - retval);
+      con->out_len -= retval;
+      con->out_keep = con->out_len;
+      if (con->state != MAT_STATE_MACHINE)
+        con->info.t.clean = 0;
+      return con->out_len < 1024 * 1024;
+    }
+
+  con->out_len  = 0;
+  con->out_keep = 0;
 
   return 1;
 }
