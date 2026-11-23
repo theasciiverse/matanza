@@ -12015,7 +12015,7 @@ before other pilots) or, when one is about to hit it, an asteroid, and works
 the same keys a player has: it turns towards its mark, thrusts when the mark
 is far, brakes when it closes in too fast, and fires when its nose is on the
 mark.  Each pilot aims a little off, by an amount that changes now and then;
-how much depends on its skill.
+how much, and how often it pulls the trigger, depends on its skill.
 
 @d MAT_PILOT_DELTA(d, size)
   if (!arg_limits)
@@ -12151,7 +12151,7 @@ mat_pilot_think ( MatConnection *con )
     ship_key_down(me);
 
   /* Fire when the nose is on the mark. */
-  if (fabs(diff) <= 1.5 && dist < 190)
+  if (fabs(diff) <= 1.5 && dist < 190 && rand() % 20 < 8 + 3 * con->pilot_skill)
     mat_bullet_new_player(me, 0, 1);
   else if (mark_ship && fabs(diff) <= 1 && dist < 420 && rand() % 40 == 0)
     mat_bullet_new_player(me, 1, 1);
