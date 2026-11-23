@@ -1,0 +1,27 @@
+[package]
+name = "matanza"
+version = "0.13.0"
+edition = "2021"
+description = "Launcher and SSH front end for Matanza, Alejandro Forero Cuervo's multiplayer ASCII space battle"
+license = "GPL-2.0-or-later"
+publish = false
+
+[[bin]]
+name = "matanza"
+path = "src/main.rs"
+
+[dependencies]
+russh = { version = "0.65", default-features = false, features = ["ring"] }
+tokio = { version = "1", features = ["rt-multi-thread", "net", "io-util", "io-std", "sync", "time", "macros", "process", "signal"] }
+crossterm = "0.29"
+log = "0.4"
+env_logger = "0.11"
+libc = "0.2"
+rand = "0.10"
+anyhow = "1"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
